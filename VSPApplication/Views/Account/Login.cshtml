@@ -1,0 +1,68 @@
+﻿@model VSPApplication.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+} 
+<style>
+    #rcorners1 {
+        border-radius: 25px;
+        background: #dedede;
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+    <!-- header logo: style can be found in header.less -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 login">
+                <center>
+                    <img src="~/img/vsp/VSPLogo.png" style="width:250px; height:80px; margin:auto" />
+                    @*<img src="http://convergentone.com.sg/wp/wp-content/uploads/2014/09/draft_lens18300241module152628152photo_1314097689logo-sample-300x288.png.j.jpg" style="width:100px; margin:auto">*@
+                </center><br>
+                <p style="color:red">@ViewBag.ShowMessage</p>
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal",@id="rcorners1", role = "form" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                  
+                    <div class="form-group">
+                        <label for="inputEmail1" style="color: #64376f ;margin-left:1%;">Email</label>
+                        
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="Email">
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                   
+                    <div class="form-group">
+                        <label for="inputPassword1" style="color: #64376f ;margin-left:1%;">Password</label>
+                        
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="Password">
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                  
+                    @*<div class="form-group">
+                        
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="chkRemember" name="chkRemember"> Remember me
+                                </label>
+                            </div>
+                       
+                    </div>*@
+                    <div class="form-group" >
+
+                            <button type="submit" class="btn btn-success" style="background: #64376f; border-color: #428bca; color: white">Sign in</button>
+                            <div style="float:right;margin-right:2%">@Html.ActionLink("Forgot Password", "ForgotPassword", "Account")</div><br><br />
+                           
+                            Not Registered?
+                            @Html.ActionLink("Create an account", "Register", "Account")
+                        </div>
+
+                 
+
+
+                }
+            </div>
+        </div>
+    </div>
+ 

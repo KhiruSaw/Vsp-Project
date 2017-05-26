@@ -1,0 +1,985 @@
+﻿@using VSPApplication.Models;
+@model dynamic
+@{
+    ViewBag.Title = "FilterOption8400";
+    Layout = "~/Views/Shared/_filterView.cshtml";
+}
+
+@using (Ajax.BeginForm("FilterOption7180", "Report", FormMethod.Post, null))
+{
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <input type="button" id="showDiv" class="btn btn-flat" value="+ Show Filter" />
+            </header>
+
+            <div class="panel-body" id="hideDiv">
+                <div class="row">
+                    <div class="col-lg-6 borderdiv">
+                        <form role="form">
+                            <div class="row" >
+                                <div class="col-lg-12">
+                                    <label>Finish Goods Item</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+                                        @Html.DropDownList("FinishGoodsItemBlanket", new List<SelectListItem> {
+                                        new SelectListItem {Text="*All Records",Value="*All Records" },
+                                        new SelectListItem {Text="Between Range",Value="Between Range" },
+                                       new SelectListItem {Text="Exact match",Value="Exact match" },
+                                       new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                       new SelectListItem {Text="Less Then",Value="Less Then" },
+                                       new SelectListItem {Text="Start With",Value="Start With" },
+                                       new SelectListItem {Text="End With",Value="End With" },
+                                       new SelectListItem {Text="Contains This",Value="Contains This" },
+                                        }, new { @class = "form-control", @id = "ddlFinishGoodsItemBlanket", @onchange = "SelectFinishGoodsItemBlanket()" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+
+                                        <div class="input-group">
+                                            <input type="hidden" id="hdnBlanket" />
+                                            <input type="text" id="txtFinishGoodsItemBlanket" name="txtFinishGoodsItemBlanket" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["txtFinishGoodsItemBlanket"]} else {@ViewBag.txtFinishGoodsItemBlanket}" readonly />
+
+                                            <span class="input-group-btn">
+                                                <a id="fgianchorBlanket" href='' data-toggle="modal" data-target="#myModal11">
+                                                    <button class="btn btn-white" type="button" onclick="FTotalPageCount2('7180', 'Finish Goods Item');"><i class="fa fa-search"></i></button>
+                                                </a>
+                                            </span>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <input type="text" id="txtFinishGoodsItemBlanket2" name="txtFinishGoodsItemBlanket2" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["txtFinishGoodsItemBlanket2"]} else {@ViewBag.txtFinishGoodsItemBlanket2}" readonly />
+                                            <span class="input-group-btn">
+                                                <a id="fgianchorBlanket2" href='' data-toggle="modal" data-target="#myModal11">
+                                                    <button class="btn btn-white" type="button" onclick="FTotalPageCount2('7180', 'Finish Goods Item');"><i class="fa fa-search"></i></button>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label>Customer Number</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        @Html.DropDownList("CustNumberBlanket", new List<SelectListItem> {
+                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                new SelectListItem {Text="Between Range",Value="Between Range" },
+               new SelectListItem {Text="Exact match",Value="Exact match" },
+               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+               new SelectListItem {Text="Less Then",Value="Less Then" },
+
+                }, new { @class = "form-control", @id = "ddlCustNumberBlanket", @onchange = "SelectCustNumberBlanket()" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <input type="hidden" id="hdnCustBlanket" />
+
+                                        <div class="input-group">
+                                            <input type="text" id="txtCustNumberBlanket" name="txtCustNumberBlanket" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["txtCustNumberBlanket"]} else {@ViewBag.txtCustNumberBlanket}" readonly />
+
+                                            <span class="input-group-btn">
+                                                <a id="anchorCustNumberBlanket" href='' data-toggle="modal" data-target="#myModal2">
+                                                    <button class="btn btn-white" type="button" onclick="FTotalPageCount2('7180', 'Customer Number');"><i class="fa fa-search"></i></button>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <input type="text" id="txtCustNumberBlanket2" name="txtCustNumberBlanket2" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["txtCustNumberBlanket2"]} else {@ViewBag.txtCustNumberBlanket2}" readonly />
+                                            <span class="input-group-btn">
+                                                <a id="anchorCustNumberBlanket1" href='' data-toggle="modal" data-target="#myModal2">
+                                                    <button class="btn btn-white" type="button" onclick="FTotalPageCount2('7180', 'Customer Number');"><i class="fa fa-search"></i></button>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div><!--/row-->
+                            <div class="row" >
+                                <div class="col-lg-12">
+                                    <label>Date Expiration</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        @Html.DropDownList("DateExpiration", new List<SelectListItem> {
+                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                new SelectListItem {Text="Between Range",Value="Between Range" },
+               new SelectListItem {Text="Exact match",Value="Exact match" },
+               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+               new SelectListItem {Text="Less Then",Value="Less Then" },
+
+                }, new { @class = "form-control", @id = "ddlDateExp", @onchange = "SelectDateExp()" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+
+
+                                        <div class="input-group" id="DateExpdiv1">
+                                            @*<input type="text" id="DateShipped1" name="DateShipped1" value="*All Records" disabled>*@
+                                            <input type="text" class="form-control" id="DateExp" name="DateExp" value="@ViewBag.DateExp" readonly>
+
+                                            <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                        </div>
+
+                                        <div class="input-group" id="txtDivDateExp" style="width:100%;">
+                                            <input type="text" class="form-control" id="txtDateExp" name="txtDateExp" value="@ViewBag.txtDateExp" readonly>
+                                            <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+                                        <div class="input-group" id="DateExpdiv2">
+                                            @*<input type="text" id="DateShipped2" name="DateShipped2" value="0" disabled>*@
+                                            <input type="text" class="form-control" id="DateExp2" value="@ViewBag.DateExp2" name="DateExp2" readonly>
+                                            <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                        </div>
+                                        <div class="input-group" id="txtDivDateExp2" style="width:100%;">
+                                            <input type="text" class="form-control" id="txtDateExp2" name="txtDateExp2" value="@ViewBag.txtDateExp2" readonly>
+                                            <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label>Customer PO #</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+                                        @Html.DropDownList("CustomerPo", new List<SelectListItem> {
+                                        new SelectListItem {Text="*All Records",Value="*All Records" },
+                                        new SelectListItem {Text="Between Range",Value="Between Range" },
+                                       new SelectListItem {Text="Exact match",Value="Exact match" },
+                                       new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                       new SelectListItem {Text="Less Then",Value="Less Then" },
+                                       new SelectListItem {Text="Start With",Value="Start With" },
+                                       new SelectListItem {Text="End With",Value="End With" },
+                                       new SelectListItem {Text="Contains This",Value="Contains This" },
+                                        }, new { @class = "form-control", @id = "ddlCustomerPo", @onchange = "SelectCustomerPo()" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+
+                                        <div class="input-group">
+                                            <input type="hidden" id="hdnCustomerPo" />
+                                            <input type="text" id="txtCustomerPo" name="txtCustomerPo" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["txtCustomerPo"]} else {@ViewBag.txtCustomerPo}" readonly />
+
+                                            <span class="input-group-btn">
+                                                <a id="custPOanchor1" href='' data-toggle="modal" data-target="#CustPOModel">
+                                                    <button class="btn btn-white" type="button" onclick="FTotalPageCount2('7180', 'Customer PO');"><i class="fa fa-search"></i></button>
+                                                </a>
+                                            </span>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <input type="text" id="txtCustomerPo2" name="txtCustomerPo2" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["txtCustomerPo2"]} else {@ViewBag.txtCustomerPo2}" readonly />
+                                            <span class="input-group-btn">
+                                                <a id="custPOanchor2" href='' data-toggle="modal" data-target="#CustPOModel">
+                                                    <button class="btn btn-white" type="button" onclick="FTotalPageCount2('7180', 'Customer PO');"><i class="fa fa-search"></i></button>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label>Inventory Type</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        @Html.DropDownList("InventoryTypeBlanket", new List<SelectListItem> {
+                                            new SelectListItem {Text="*All Records",Value="*All Records" },
+                                            new SelectListItem {Text="Between Range",Value="Between Range" },
+                                           new SelectListItem {Text="Exact match",Value="Exact match" },
+                                           new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                           new SelectListItem {Text="Less Then",Value="Less Then" },
+                                           new SelectListItem {Text="Start With",Value="Start With" },
+                                           new SelectListItem {Text="End With",Value="End With" },
+                                           new SelectListItem {Text="Contains This",Value="Contains This" },
+                                         }, new { @class = "form-control", @id = "ddlInventoryTypeBlanket", @onchange = "SelectInventoryTypeBlanket()" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+
+                                        <div class="input-group">
+                                            <input type="text" id="txtInventoryTypeBlanket" name="txtInventoryTypeBlanket" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["txtInventoryTypeBlanket"]} else {@ViewBag.txtInventoryTypeBlanket}" readonly />
+
+                                            <span class="input-group-btn">
+                                                <a id="InventoryTypeBlanketanchor1" href='' data-toggle="modal" data-target="#myModal4">
+                                                    <button class="btn btn-white" type="button" onclick="FTotalPageCount2('7180', 'Inventory Type');"><i class="fa fa-search"></i></button>
+                                                </a>
+                                            </span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <input type="text" id="txtInventoryTypeBlanket2" name="txtInventoryTypeBlanket2" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["txtInventoryTypeBlanket2"]} else {@ViewBag.txtInventoryTypeBlanket2}" readonly />
+                                            <span class="input-group-btn">
+                                                <a id="InventoryTypeBlanketanchor2" href='' data-toggle="modal" data-target="#myModal4">
+                                                    <button class="btn btn-white" type="button" onclick="FTotalPageCount2('7180', 'Inventory Type');"><i class="fa fa-search"></i></button>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label>Sub-Type 2</label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        @Html.DropDownList("SubType2Blanket", new List<SelectListItem> {
+                                            new SelectListItem {Text="*All Records",Value="*All Records" },
+                                            new SelectListItem {Text="Between Range",Value="Between Range" },
+                                           new SelectListItem {Text="Exact match",Value="Exact match" },
+                                           new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                           new SelectListItem {Text="Less Then",Value="Less Then" },
+                                           new SelectListItem {Text="Start With",Value="Start With" },
+                                           new SelectListItem {Text="End With",Value="End With" },
+                                           new SelectListItem {Text="Contains This",Value="Contains This" },
+                                         }, new { @class = "form-control", @id = "ddlSubType2Blanket", @onchange = "SelectSubType2Blanket()" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+
+                                        <div class="input-group">
+                                            <input type="text" id="txtSubType2Blanket" name="txtSubType2Blanket" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["txtSubType2Blanket"]} else {@ViewBag.txtSubType2Blanket}" readonly />
+
+                                            <span class="input-group-btn">
+                                                <a id="SubType2Blanketanchor1" href='' data-toggle="modal" data-target="#myModal6">
+                                                    <button class="btn btn-white" type="button"  onclick="FTotalPageCount2('7180', 'Sub-Type 2');"><i class="fa fa-search"></i></button>
+                                                </a>
+                                            </span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <input type="text" id="txtSubType2Blanket2" name="txtSubType2Blanket2" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["txtSubType2Blanket2"]} else {@ViewBag.txtSubType2Blanket2}" readonly />
+                                            <span class="input-group-btn">
+                                                <a id="SubType2Blanketanchor2" href='' data-toggle="modal" data-target="#myModal6">
+                                                    <button class="btn btn-white" type="button" onclick="FTotalPageCount2('7180', 'Sub-Type 2');"><i class="fa fa-search"></i></button>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--/row-->
+
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-md-12"><label>Display Style</label></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5"><label style="margin-top: 6px;margin-left: 10px;">Which Style of Report Data</label></div>
+                            <div class="col-md-7">
+                                <select class="form-control" name="dllStyleReport" id="dllStyleReport">
+                                    <option>Summary</option>
+                                    <option>Detailed</option>
+                                    <option>Detail with Summary</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-md-12"><label>Pull QTY</label></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5"><label style="margin-top: 6px;margin-left: 10px;">The Quantity Level is</label></div>
+                            <div class="col-md-7">
+                                <select class="form-control" name="dllQtyLevel" id="dllQtyLevel">
+                                    <option>Greater Then One</option>
+                                    <option>Equal to Zero</option>
+                                    <option>All QTY Levels</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-md-12"><label>Job Status</label></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5"><label style="margin-top: 6px;margin-left: 10px;">The Status of the Job is</label></div>
+                            <div class="col-md-7">
+                                <select class="form-control" name="dllJobStatus" id="dllJobStatus">
+                                    <option>Open Or Complete</option>
+                                    <option>Open</option>
+                                    <option>Complete</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-md-12"><label>Sorting</label></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5"><label style="margin-top: 6px;margin-left: 10px;">1).Sort report by</label></div>
+                            <div class="col-md-7">
+                                <select class="form-control" name="dllSorting" id="dllSorting">
+                                    <option>Order Number</option>
+                                    <option>Expire Date</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <input type="submit" class="btn btn-primary" name="filter" id="btnSubmit" value="Run Report Now" />
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            @*<input type="button" class="btn btn-primary " value="Asyn Generate Report" onclick="location.href='@Url.Action("RunReportAsyn", "Report")'" />*@
+                            <input type="submit" class="btn btn-primary" name="filter" id="btnSubmit" onclick="return MessageShow()" value="Run as a Job and Notify" />
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+            <!--Report-->
+                <div>
+                    @if (ViewBag.Filter == "Run Report Now")
+                    {
+                        <section class="panel">
+                            <div class="panel-body table-responsive">
+
+                                <div id="reportData" style="width:100%;height:600px;overflow:scroll;">
+                                    @using ReportViewerForMvc;
+                                    @{
+                                        ViewBag.Title = "VSP7180";
+                                    }
+
+                                    @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { height = "560px", width = "100%" })
+
+                                </div>
+
+
+                            </div>
+                        </section>
+                                        }
+                </div>
+
+                                        }
+
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Customer ID</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("ddlCustomerId1", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                },  new { @id = "ddlCustomerId1", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("ddlCustomerId2", new List<SelectListItem> {
+
+
+               new SelectListItem {Text="Customer ID",Value="Customer ID" },
+               new SelectListItem {Text="Name",Value="Name" },
+
+                }, new { @id = "ddlCustomerId2", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtCustIdBlanket" class="form-control" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </div>
+
+                    </div>
+
+                    <br />
+                    <table class="table" id="tblCutIdBlanket">
+                        <thead>
+
+                            <tr>
+                                <th></th>
+                                <th>
+                                    CustomerID
+                                </th>
+                                <th>
+                                    CustomerName
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption teacher in Model.CustomerIDs)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtnCustId" id="rdBtnCustId" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => teacher.CustomerID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => teacher.CustomerName)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer modal-footer-new1">
+
+                    Page &nbsp; <label type="label" id="Increatement_PageCount_CustomerNumber">1</label>
+                    &nbsp; of &nbsp;<label type="label" id="Total_PageCount_CustomerNumber">0</label> &nbsp; pages
+
+                    <span style="margin-left: 390px;">
+                        <button type="button" id="0" onclick="F0_tblCutIdBlanket();">First</button>
+                        <button type="button" id="-1" onclick="FMinus10_tblCutIdBlanket();"><<</button>
+                        <button type="button" id="1" onclick="F1_tblCutIdBlanket();">1</button>
+                        <button type="button" id="2" onclick="F2_tblCutIdBlanket();">2</button>
+                        <button type="button" id="3" onclick="F3_tblCutIdBlanket();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                        <button type="button" id="+1" onclick="FPluse10_tblCutIdBlanket();">>></button>
+                        <button type="button" id="99" onclick="F99_tblCutIdBlanket();">Last</button>
+                        <input type="hidden" id="Total_count_tblCutIdBlanket" value="0" />
+                        <input type="hidden" id="count_tblCutIdBlanket" />
+                        <input type="hidden" id="Total_row_count_tblCutIdBlanket" value="300000" />
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCustId" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="modal fade" id="myModal11" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Finish Goods Item</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("FinishGoodsItem", new List<SelectListItem> {
+                                            new SelectListItem {Text="Start With",Value="Start With" },
+                                             new SelectListItem {Text="End With",Value="End With" },
+                                              new SelectListItem {Text="Contains This",Value="Contains This" },
+                                             },  new { @id = "ddlFGItemBlanket", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+                                   new SelectListItem {Text="Finished Good",Value="Finished Good" },
+                                   new SelectListItem {Text="Description",Value="Description" },
+                                   new SelectListItem {Text="Customer Part",Value="Customer Part" },
+                                   new SelectListItem {Text="Customer ID",Value="Customer ID" },
+                                   new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                                    },  new { @id = "ddlFGItemBlanket2", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtFGItemBlanket" class="form-control" />
+                            @*<input type="hidden" id="hdnFinishGoodsItemFGDVPU" />*@
+                        </div>
+
+                    </div>                 
+
+                    <table class="table" id="tblFGItem">                     
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Description
+                                </th>
+
+                                <th>
+                                    FinishedGood
+                                </th>
+                                <th>
+                                    CustomerPart
+                                </th>
+                                <th>
+                                    CustomerID
+                                </th>
+                                <th>
+                                    CustomerName
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption fgi in Model.FinishGoodItem2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtnfgi" id="rdBtnfgi" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgi.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgi.FinishedGood)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgi.CustomerPart)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgi.CustomerID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgi.CustomerName)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer modal-footer-new1">
+
+                    Page &nbsp; <label type="label" id="Increatement_PageCount_FinishGoodsItem">1</label>
+                    &nbsp; of &nbsp;<label type="label" id="Total_PageCount_FinishGoodsItem">0</label> &nbsp; pages
+
+                    <span style="margin-left: 390px;">
+                        <button type="button" id="0" onclick="F0_tblFGItem();">First</button>
+                        <button type="button" id="-1" onclick="FMinus10_tblFGItem();"><<</button>
+                        <button type="button" id="1" onclick="F1_tblFGItem();">1</button>
+                        <button type="button" id="2" onclick="F2_tblFGItem();">2</button>
+                        <button type="button" id="3" onclick="F3_tblFGItem();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                        <button type="button" id="+1" onclick="FPluse10_tblFGItem();">>></button>
+                        <button type="button" id="99" onclick="F99_tblFGItem();">Last</button>
+                        <input type="hidden" id="Total_count_tblFGItem" value="0" />
+                        <input type="hidden" id="count_tblFGItem" />
+                        <input type="hidden" id="Total_row_count_tblFGItem" value="300000" />
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnFinishGood" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="modal fade" id="CustPOModel" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Customer PO</h4>
+                </div>
+                <div class="modal-body">
+
+
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("CustomerPO", new List<SelectListItem> {
+                                            new SelectListItem {Text="Start With",Value="Start With" },
+                                             new SelectListItem {Text="End With",Value="End With" },
+                                              new SelectListItem {Text="Contains This",Value="Contains This" },
+                                             },  new { @id = "ddlCustomerPO", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("CustomerPO2", new List<SelectListItem> {
+                                   new SelectListItem {Text="Customer PO",Value="Customer PO" },
+                                   new SelectListItem {Text="Bill To Name",Value="Bill To Name" },
+                                   new SelectListItem {Text="Bill To Numb",Value="Bill To Numb" },
+                                   new SelectListItem {Text="Status",Value="Status" },
+                                   new SelectListItem {Text="JC/OE Description",Value="JC/OE Description" },
+                                    },  new { @id = "ddlCustomerPO2", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtCustPO" class="form-control" />
+                            <input type="hidden" id="hdnFinishGoodsItemFGDVPU" />
+                        </div>
+
+                    </div>
+
+
+                    <table class="table" id="tableCustPO">
+                        <br />
+                        <thead>
+
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Customer PO
+                                </th>
+
+                                <th>
+                                    Bill To Name
+                                </th>
+                                <th>
+                                    Bill To Numb
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    JC/OE Description
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption fgi in Model.CustomerPo)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtnCustPO" id="rdBtnCustPO" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgi.CustomerPO)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgi.BillToName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgi.BillToNumb)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgi.Status)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgi.JCOEDescription)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer modal-footer-new1">
+                    Page &nbsp; <label type="label" id="Increatement_PageCount_CutomerPO">1</label>
+                    &nbsp; of &nbsp;<label type="label" id="Total_PageCount_CutomerPO">0</label> &nbsp; pages
+
+                    <span style="margin-left: 390px;">
+                        <button type="button" id="0" onclick="F0_tableCustPO();">First</button>
+                        <button type="button" id="-1" onclick="FMinus10_tableCustPO();"><<</button>
+                        <button type="button" id="1" onclick="F1_tableCustPO();">1</button>
+                        <button type="button" id="2" onclick="F2_tableCustPO();">2</button>
+                        <button type="button" id="3" onclick="F3_tableCustPO();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                        <button type="button" id="+1" onclick="FPluse10_tableCustPO();">>></button>
+                        <button type="button" id="99" onclick="F99_tableCustPO();">Last</button>
+                        <input type="hidden" id="Total_count_tableCustPO" value="0" />
+                        <input type="hidden" id="count_tableCustPO" />
+                        <input type="hidden" id="Total_row_count_tableCustPO" value="300000" />
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCustPO" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal4" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Inventory Type</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+
+                        <div class="col-lg-3">
+                            @Html.DropDownList("InventoryType", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                },  new { @id = "dllITypeBlanket", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("InventoryType2", new List<SelectListItem> {
+               new SelectListItem {Text="Inventory Type",Value="Inventory Type"},
+               new SelectListItem {Text="Model Name",Value="Model Name" },
+                new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                },  new { @id = "dllITypeBlanket2", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtITypeBlanket" class="form-control" />
+                            <input type="hidden" id="hdnInventoryTypeFGDVPU" />
+                        </div>
+                    </div>
+
+                    <br />
+                    <table class="table" id="tblInventoryTypeBlanket">
+                        <thead>
+
+                            <tr>
+                                <th></th>
+
+                                <th>
+                                    Inventory Type
+                                </th>
+                                <th>
+                                    Model Name
+                                </th>
+                                <th>
+                                    Customer Name
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption it in Model.InventoryType2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtnIType" id="rdBtnIType" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => it.InventoryType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => it.ModelName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => it.CustomerName)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer modal-footer-new1">
+
+                    Page &nbsp; <label type="label" id="Increatement_PageCount_InventoryType">1</label>
+                    &nbsp; of &nbsp;<label type="label" id="Total_PageCount_InventoryType">0</label> &nbsp; pages
+
+                    <span style="margin-left: 390px;">
+                        <button type="button" id="0" onclick="F0_tblInventoryTypeBlanket();">First</button>
+                        <button type="button" id="-1" onclick="FMinus10_tblInventoryTypeBlanket();"><<</button>
+                        <button type="button" id="1" onclick="F1_tblInventoryTypeBlanket();">1</button>
+                        <button type="button" id="2" onclick="F2_tblInventoryTypeBlanket();">2</button>
+                        <button type="button" id="3" onclick="F3_tblInventoryTypeBlanket();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                        <button type="button" id="+1" onclick="FPluse10_tblInventoryTypeBlanket();">>></button>
+                        <button type="button" id="99" onclick="F99_tblInventoryTypeBlanket();">Last</button>
+                        <input type="hidden" id="Total_count_tblInventoryTypeBlanket" value="0" />
+                        <input type="hidden" id="count_tblInventoryTypeBlanket" />
+                        <input type="hidden" id="Total_row_count_tblInventoryTypeBlanket" value="300000" />
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnInType" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal6" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sub-Type 2</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+
+                        <div class="col-lg-3">
+                            @Html.DropDownList("SubType2", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                },  new { @id = "ddlSType2Blanket", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("SubType2_2", new List<SelectListItem> {
+               new SelectListItem {Text="Code",Value="Code" },
+               new SelectListItem {Text="Description",Value="Description" },
+                },  new { @id = "ddlSType2Blanket2", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtSType2" class="form-control" />
+                            <input type="hidden" id="hdnSubType2FGDVPU" />
+                        </div>
+
+                    </div>
+
+                    <br />
+
+                    <table class="table" id="tblSubType2Blanket">
+                        <thead>
+                            <tr>
+                                <th></th>
+
+                                <th>
+                                    Code
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption st2 in Model.SubType_2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtnSubType" id="rdBtnSubType" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => st2.Code)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => st2.Description)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer modal-footer-new1">
+
+                    Page &nbsp; <label type="label" id="Increatement_PageCount_Sub_Type2">1</label>
+                    &nbsp; of &nbsp;<label type="label" id="Total_PageCount_Sub_Type2">0</label> &nbsp; pages
+
+                    <span style="margin-left: 390px;">
+                        <button type="button" id="0" onclick="F0_tblSubType2Blanket();">First</button>
+                        <button type="button" id="-1" onclick="FMinus10_tblSubType2Blanket();"><<</button>
+                        <button type="button" id="1" onclick="F1_tblSubType2Blanket();">1</button>
+                        <button type="button" id="2" onclick="F2_tblSubType2Blanket();">2</button>
+                        <button type="button" id="3" onclick="F3_tblSubType2Blanket();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                        <button type="button" id="+1" onclick="FPluse10_tblSubType2Blanket();">>></button>
+                        <button type="button" id="99" onclick="F99_tblSubType2Blanket();">Last</button>
+                        <input type="hidden" id="Total_count_tblSubType2Blanket" value="0" />
+                        <input type="hidden" id="count_tblSubType2Blanket" />
+                        <input type="hidden" id="Total_row_count_tblSubType2Blanket" value="300000" />
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSubType2" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

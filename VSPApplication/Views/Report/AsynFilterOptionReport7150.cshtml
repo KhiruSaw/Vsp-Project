@@ -1,0 +1,1193 @@
+﻿
+@using VSPApplication.Models;
+@model dynamic
+@{
+    ViewBag.Title = "AsynFilterOptionReport7150";
+    Layout = "~/Views/Shared/_filterView.cshtml";
+}
+
+<h2>AsynReport7150</h2>
+@using (Html.BeginForm("AsynReportView7150", " Report", FormMethod.Post, new { id = " Report" }))
+{
+    @*@Html.AntiForgeryToken()*@
+
+
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+ <!-- Right side column. Contains the navbar and content of the page -->
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            <span class="fltrcls" data-toggle="collapse" data-target="#filter">
+                                <span class="glyphicon glyphicon-plus-sign"></span> Filter
+                            </span>
+
+
+
+                        </header>
+                        <div class="panel-body collapse" id="filter">
+                            <form role="form">
+                                <div class="row" style="background-color: #edf0ff;">
+                                    <div class="col-lg-12">
+                                        <label>FinishGoodsItem1</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+                                            @Html.DropDownList("FinishGoodsItem", new List<SelectListItem> {
+                                        new SelectListItem {Text="*All Records",Value="*All Records" },
+                                        new SelectListItem {Text="Between Range",Value="Between Range" },
+                                       new SelectListItem {Text="Exact match",Value="Exact match" },
+                                       new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                       new SelectListItem {Text="Less Then",Value="Less Then" },
+                                       new SelectListItem {Text="Start With",Value="Start With" },
+                                       new SelectListItem {Text="End With",Value="End With" },
+                                       new SelectListItem {Text="Contains This",Value="Contains This" },
+                                        }, "--Select-", new { @class = "form-control", @id = "ddlFinishGoodsItem", @onchange = "SelectFinishGoodsItem()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+
+                                            <div class="input-group">
+                                                <input type="hidden" id="hdnfgi" />
+                                                <input type="text" id="FinishGoodsItemID" name="FinishGoodsItemID" class="form-control" value="*All Records" readonly />
+
+                                                <span class="input-group-btn">
+                                                    <a id="fganchor1" href='' data-toggle="modal" data-target="#myModal">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+                                            <div class="input-group">
+                                                <input type="text" id="FinishGoodsItemID2" name="FinishGoodsItemID2" class="form-control" value="0" readonly />
+                                                <span class="input-group-btn">
+                                                    <a id="fganchor2" href='' data-toggle="modal" data-target="#myModal">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!--/row-->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label>Custormer ID</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            @Html.DropDownList("CustomerID", new List<SelectListItem> {
+                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                new SelectListItem {Text="Between Range",Value="Between Range" },
+               new SelectListItem {Text="Exact match",Value="Exact match" },
+               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+               new SelectListItem {Text="Less Then",Value="Less Then" },
+
+                }, "--Select-", new { @class = "form-control", @id = "ddlCustomerID", @onchange = "SelectCustomerID()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+
+                                            <div class="input-group">
+                                                <input type="text" id="CustomerID1" name="CustomerID1" class="form-control" value="*All Records" readonly />
+
+                                                <span class="input-group-btn">
+                                                    <a id="cianchor1" href='' data-toggle="modal" data-target="#myModal2">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+                                            <div class="input-group">
+                                                <input type="text" id="CustomerID2" name="CustomerID2" class="form-control" value="0" readonly />
+                                                <span class="input-group-btn">
+                                                    <a id="cianchor2" href='' data-toggle="modal" data-target="#myModal2">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!--/row-->
+                                <div class="row" style="background-color: #edf0ff;">
+                                    <div class="col-lg-12">
+                                        <label>CustomerName</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            @Html.DropDownList("CustomerName", new List<SelectListItem> {
+                new SelectListItem {Text="*All Records",Value="*All Records" },
+                new SelectListItem {Text="Between Range",Value="Between Range" },
+               new SelectListItem {Text="Exact match",Value="Exact match" },
+               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+               new SelectListItem {Text="Less Then",Value="Less Then" },
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "--Select-", new { @class = "form-control", @id = "ddlCustomerName", @onchange = "SelectCustomerName()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+
+                                            <div class="input-group">
+                                                <input type="text" id="CustomerName1" name="CustomerName1" class="form-control" value="*All Records" readonly />
+
+                                                <span class="input-group-btn">
+                                                    <a id="cnanchor1" href='' data-toggle="modal" data-target="#myModal3">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+                                            <div class="input-group">
+                                                <input type="text" id="CustomerName2" name="CustomerName2" class="form-control" value="0" readonly />
+                                                <span class="input-group-btn">
+                                                    <a id="cnanchor2" href='' data-toggle="modal" data-target="#myModal3">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!--/row-->
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label>DateShipped</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            @Html.DropDownList("DateShipped", new List<SelectListItem> {
+                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                new SelectListItem {Text="Between Range",Value="Between Range" },
+               new SelectListItem {Text="Exact match",Value="Exact match" },
+               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+               new SelectListItem {Text="Less Then",Value="Less Then" },
+
+                }, "--Select-", new { @class = "form-control", @id = "ddlDateShipped", @onchange = "SelectDateShipped()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+
+
+                                            <div class="input-group" id="datediv1">
+                                                @*<input type="text" id="DateShipped1" name="DateShipped1" value="*All Records" disabled>*@
+                                                <input type="text" class="form-control" id="DateShipped1" name="DateShipped1" value="*All Records" readonly>
+
+                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                            </div>
+
+                                            <div class="input-group" id="rangeval" style="width:100%;">
+                                                <input type="text" class="form-control" id="rangevaltext" name="rangevaltext" value="" readonly>
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+                                            <div class="input-group">
+                                                @*<input type="text" id="DateShipped2" name="DateShipped2" value="0" disabled>*@
+                                                <input type="text" class="form-control" id="DateShipped2" value="0" name="DateShipped2" readonly>
+                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!--/row-->                                <div class="row" style="background-color: #edf0ff;">
+                                    <div class="col-lg-12">
+                                        <label>InventoryType</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            @Html.DropDownList("InventoryType", new List<SelectListItem> {
+                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                new SelectListItem {Text="Between Range",Value="Between Range" },
+               new SelectListItem {Text="Exact match",Value="Exact match" },
+               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+               new SelectListItem {Text="Less Then",Value="Less Then" },
+
+                }, "--Select-", new { @class = "form-control", @id = "ddlInventoryType", @onchange = "SelectInventoryType()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+
+                                            <div class="input-group">
+                                                <input type="text" id="InventoryType1" name="InventoryType1" class="form-control" value="*All Records" readonly />
+
+                                                <span class="input-group-btn">
+                                                    <a id="itanchor1" href='' data-toggle="modal" data-target="#myModal5">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+                                            <div class="input-group">
+                                                <input type="text" id="InventoryType2" name="InventoryType2" class="form-control" value="0" readonly />
+                                                <span class="input-group-btn">
+                                                    <a id="itanchor2" href='' data-toggle="modal" data-target="#myModal5">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!--/row-->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label>SellRep</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            @Html.DropDownList("SellRep", new List<SelectListItem> {
+                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                new SelectListItem {Text="Between Range",Value="Between Range" },
+               new SelectListItem {Text="Exact match",Value="Exact match" },
+               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+               new SelectListItem {Text="Less Then",Value="Less Then" },
+
+                }, "--Select-", new { @class = "form-control", @id = "ddlSellRep", @onchange = "SelectSellRep()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+
+                                            <div class="input-group">
+                                                <input type="text" id="SellRep1" name="SellRep1" class="form-control" value="*All Records" readonly />
+
+                                                <span class="input-group-btn">
+                                                    <a id="sranchor1" href='' data-toggle="modal" data-target="#myModal6">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+                                            <div class="input-group">
+                                                <input type="text" id="SellRep2" name="SellRep2" class="form-control" value="0" readonly />
+                                                <span class="input-group-btn">
+                                                    <a id="sranchor2" href='' data-toggle="modal" data-target="#myModal6">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!--/row-->
+                                <div class="row" style="background-color: #edf0ff;">
+                                    <div class="col-lg-12">
+                                        <label>Shipping Location</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            @Html.DropDownList("ShippingLocatoin", new List<SelectListItem> {
+                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                new SelectListItem {Text="Between Range",Value="Between Range" },
+               new SelectListItem {Text="Exact match",Value="Exact match" },
+               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+               new SelectListItem {Text="Less Then",Value="Less Then" },
+
+                }, "--Select-", new { @class = "form-control", @id = "ddlShippingLocatoin", @onchange = "SelectShippingLocatoin()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+
+                                            <div class="input-group">
+                                                <input type="text" id="ShippingLocatoin1" name="ShippingLocatoin1" class="form-control" value="*All Records" readonly />
+
+                                                <span class="input-group-btn">
+                                                    <a id="slanchor1" href='' data-toggle="modal" data-target="#myModal7">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+                                            <div class="input-group">
+                                                <input type="text" id="ShippingLocatoin2" name="ShippingLocatoin2" class="form-control" value="0" readonly />
+                                                <span class="input-group-btn">
+                                                    <a id="slanchor2" href='' data-toggle="modal" data-target="#myModal7">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!--/row-->
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label>Order Type</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            @Html.DropDownList("OrderType", new List<SelectListItem> {
+                new SelectListItem {Text="*All Records",Value="*All Records" },
+                new SelectListItem {Text="Between Range",Value="Between Range" },
+               new SelectListItem {Text="Exact match",Value="Exact match" },
+               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+               new SelectListItem {Text="Less Then",Value="Less Then" },
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "--Select-", new { @class = "form-control", @id = "ddlOrderType", @onchange = "SelectOrderType()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+
+                                            <div class="input-group">
+                                                <input type="text" id="OrderType1" name="OrderType1" class="form-control" value="*All Records" readonly />
+
+                                                <span class="input-group-btn">
+                                                    <a id="otanchor1" href='' data-toggle="modal" data-target="#myModal8">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+                                            <div class="input-group">
+                                                <input type="text" id="OrderType2" name="OrderType2" class="form-control" value="0" readonly />
+                                                <span class="input-group-btn">
+                                                    <a id="otanchor2" href='' data-toggle="modal" data-target="#myModal8">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!--/row-->
+                                <div class="row" style="background-color: #edf0ff;">
+                                    <div class="col-lg-12">
+                                        <label>Product Code</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            @Html.DropDownList("ProductCode", new List<SelectListItem> {
+                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                new SelectListItem {Text="Between Range",Value="Between Range" },
+               new SelectListItem {Text="Exact match",Value="Exact match" },
+               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+               new SelectListItem {Text="Less Then",Value="Less Then" },
+
+                }, "--Select-", new { @class = "form-control", @id = "ddlProductCode", @onchange = "SelectProductCode()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+
+                                            <div class="input-group">
+                                                <input type="text" id="ProductCode1" name="ProductCode1" class="form-control" value="*All Records" readonly />
+
+                                                <span class="input-group-btn">
+                                                    <a id="pcanchor1" href='' data-toggle="modal" data-target="#myModal9">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+                                            <div class="input-group">
+                                                <input type="text" id="ProductCode2" name="ProductCode2" class="form-control" value="0" readonly />
+                                                <span class="input-group-btn">
+                                                    <a id="pcanchor2" href='' data-toggle="modal" data-target="#myModal9">
+                                                        <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!--/row-->
+
+
+                            </form>
+                            <div class="col-lg-12">
+                                @*<button class="btn btn-primary">Submit</button>*@
+                                <input type="submit" class="btn btn-primary" name="filter" id="btnSubmit" value="Submit" />
+                            </div>
+
+
+                        </div>
+                    </section>
+                </div>
+
+            </div><!--row1-->
+            <!--Report-->
+            <section class="panel">
+                <div class="panel-body table-responsive">
+                  
+                    <div class="form-group">
+
+                        <div class="col-lg-6">
+                            <input type="button" class="btn btn-primary form-control" value="AsynGenrate Show PickTicket Report" onclick="location.href='@Url.Action("RunReportAsyn", " Report")'" />
+                        </div>
+                    </div>
+                  
+
+
+                </div>
+            </section>
+
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+
+                            }
+
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">FinishGoodItem</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-12">
+
+                    <p>
+                        Search For<br /> @Html.DropDownList("FinishGoodsItem1", new List<SelectListItem> {
+                                            new SelectListItem {Text="Start With",Value="Start With" },
+                                             new SelectListItem {Text="End With",Value="End With" },
+                                              new SelectListItem {Text="Contains This",Value="Contains This" },
+                                             }, "--Select-", new { @id = "ddlFinishGoodsItem1", })
+                        @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+                                   new SelectListItem {Text="Finished Good",Value="Finished Good" },
+                                   new SelectListItem {Text="Description",Value="Description" },
+                                   new SelectListItem {Text="Customer Part",Value="Customer Part" },
+                                   new SelectListItem {Text="CustomerID",Value="CustomerID" },
+                                   new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                                    }, "--Select-", new { @id = "ddlFinishGoodsItem2", })
+                        <input type="text" id="txtSearch" />
+                        <input type="hidden" id="hdnFinishGoodsItem" />
+                    </p>
+                </div>
+                @if (ViewBag.Filter != "Submit")
+                {
+                    <table class="table" id="table1">
+                        <tr>
+                            <th></th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                FinishedGood
+                            </th>
+                            <th>
+                                CustomerPart
+                            </th>
+                            <th>
+                                CustomerID
+                            </th>
+                            <th>
+                                CustomerName
+                            </th>
+
+                        </tr>
+
+                        @foreach (FinishGoodItem fgi in Model.FinishGoodItem)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="radio" name="rdBtn" id="rdBtn" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => fgi.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => fgi.FinishedGood)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => fgi.CustomerPart)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => fgi.CustomerID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => fgi.CustomerName)
+                                </td>
+
+                            </tr>
+                        }
+                    </table>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSub" class="btn btn-default" data-dismiss="modal">OK</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Customer ID</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12">
+
+                        <p>
+                            Search For<br /> @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem1", })
+                            @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Finished Good",Value="Finished Good" },
+               new SelectListItem {Text="Description",Value="Description" },
+               new SelectListItem {Text="Customer Part",Value="Customer Part" },
+               new SelectListItem {Text="CustomerID",Value="CustomerID" },
+               new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem2", })
+                            <input type="text" id="txtSearch" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </p>
+                    </div>
+                    @if (ViewBag.Filter != "Submit")
+                    {
+                        <table class="table" id="table2">
+                            <tr>
+                                <th></th>
+                                <th>
+                                    CustomerID
+                                </th>
+                                <th>
+                                    CustomerName
+                                </th>
+
+                            </tr>
+
+                            @foreach (FinishGoodItem ci in Model.CustomerIDs)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn2" id="rdBtn2" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => ci.CustomerID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => ci.CustomerName)
+                                    </td>
+
+                                </tr>
+                            }
+                        </table>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub2" class="btn btn-default" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal3" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Customer Name</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12">
+
+                        <p>
+                            Search For<br /> @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem1", })
+                            @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Finished Good",Value="Finished Good" },
+               new SelectListItem {Text="Description",Value="Description" },
+               new SelectListItem {Text="Customer Part",Value="Customer Part" },
+               new SelectListItem {Text="CustomerID",Value="CustomerID" },
+               new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem2", })
+                            <input type="text" id="txtSearch" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </p>
+                    </div>
+                    @if (ViewBag.Filter != "Submit")
+                    {
+                        <table class="table" id="table3">
+                            <tr>
+                                <th></th>
+                                <th>
+                                    CustomerName
+                                </th>
+                                <th>
+                                    CustomerID
+                                </th>
+
+                            </tr>
+
+                            @foreach (FinishGoodItem cn in Model.CustomerName2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn3" id="rdBtn3" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => cn.CustomerName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => cn.CustomerID)
+                                    </td>
+
+                                </tr>
+                            }
+                        </table>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub3" class="btn btn-default" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal5" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Inventory Type</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12">
+
+                        <p>
+                            Search For<br /> @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem1", })
+                            @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Finished Good",Value="Finished Good" },
+               new SelectListItem {Text="Description",Value="Description" },
+               new SelectListItem {Text="Customer Part",Value="Customer Part" },
+               new SelectListItem {Text="CustomerID",Value="CustomerID" },
+               new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem2", })
+                            <input type="text" id="txtSearch" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </p>
+                    </div>
+                    @if (ViewBag.Filter != "Submit")
+                    {
+                        <table class="table" id="table4">
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Inventory Type
+                                </th>
+                                <th>
+                                    Model Name
+                                </th>
+                                <th>
+                                    Customer Name
+                                </th>
+
+                            </tr>
+
+                            @foreach (FinishGoodItem it in Model.InventoryType2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn5" id="rdBtn5" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => it.InventoryType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => it.ModelName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => it.CustomerName)
+                                    </td>
+
+                                </tr>
+                            }
+                        </table>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub5" class="btn btn-default" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal6" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sales Rep</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12">
+
+                        <p>
+                            Search For<br /> @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem1", })
+                            @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Finished Good",Value="Finished Good" },
+               new SelectListItem {Text="Description",Value="Description" },
+               new SelectListItem {Text="Customer Part",Value="Customer Part" },
+               new SelectListItem {Text="CustomerID",Value="CustomerID" },
+               new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem2", })
+                            <input type="text" id="txtSearch" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </p>
+                    </div>
+                    @if (ViewBag.Filter != "Submit")
+                    {
+                        <table class="table" id="table5">
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Sales Rep.
+                                </th>
+                                <th>
+                                    First Name
+                                </th>
+                                <th>
+                                    Last Name
+                                </th>
+
+                            </tr>
+
+                            @foreach (FinishGoodItem Item in Model.SalesRep2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn6" id="rdBtn6" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Item.SalesRep)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Item.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Item.LastName)
+                                    </td>
+
+                                </tr>
+                            }
+                        </table>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub6" class="btn btn-default" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal7" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Shipping Location</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12">
+
+                        <p>
+                            Search For<br /> @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem1", })
+                            @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Finished Good",Value="Finished Good" },
+               new SelectListItem {Text="Description",Value="Description" },
+               new SelectListItem {Text="Customer Part",Value="Customer Part" },
+               new SelectListItem {Text="CustomerID",Value="CustomerID" },
+               new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem2", })
+                            <input type="text" id="txtSearch" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </p>
+                    </div>
+                    <div class="table-responsive">
+                        @if (ViewBag.Filter != "Submit")
+                        {
+                            <table class="table" id="table6">
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        Shipping Location
+                                    </th>
+                                    <th>
+                                        Customer Name
+                                    </th>
+                                    <th>
+                                        ContactName
+                                    </th>
+                                    <th>
+                                        CustomerID
+                                    </th>
+                                    <th>
+                                        Address
+                                    </th>
+                                    <th>
+                                        City
+                                    </th>
+                                    <th>
+                                        State
+                                    </th>
+
+                                </tr>
+
+                                @foreach (FinishGoodItem Item in Model.ShippingLocation2)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="radio" name="rdBtn7" id="rdBtn7" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Item.ShippingLocation)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Item.CustomerName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Item.ContactName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Item.CustomerID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Item.Address)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Item.City)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Item.State)
+                                        </td>
+
+                                    </tr>
+                                }
+                            </table>
+                        }
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub7" class="btn btn-default" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal8" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Order Type</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12">
+
+                        <p>
+                            Search For<br /> @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem1", })
+                            @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Finished Good",Value="Finished Good" },
+               new SelectListItem {Text="Description",Value="Description" },
+               new SelectListItem {Text="Customer Part",Value="Customer Part" },
+               new SelectListItem {Text="CustomerID",Value="CustomerID" },
+               new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem2", })
+                            <input type="text" id="txtSearch" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </p>
+                    </div>
+                    @if (ViewBag.Filter != "Submit")
+                    {
+                        <table class="table" id="table7">
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Code
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+
+
+                            </tr>
+
+                            @foreach (FinishGoodItem Item in Model.OrderType2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn8" id="rdBtn8" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Item.Code)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Item.Description)
+                                    </td>
+
+
+                                </tr>
+                            }
+                        </table>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub8" class="btn btn-default" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal9" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Product Code</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12">
+
+                        <p>
+                            Search For<br /> @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem1", })
+                            @Html.DropDownList("FinishGoodsItem2", new List<SelectListItem> {
+               new SelectListItem {Text="Finished Good",Value="Finished Good" },
+               new SelectListItem {Text="Description",Value="Description" },
+               new SelectListItem {Text="Customer Part",Value="Customer Part" },
+               new SelectListItem {Text="CustomerID",Value="CustomerID" },
+               new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                }, "--Select-", new { @id = "ddlFinishGoodsItem2", })
+                            <input type="text" id="txtSearch" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </p>
+                    </div>
+                    @if (ViewBag.Filter != "Submit")
+                    {
+                        <table class="table" id="table8">
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Code
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+
+
+                            </tr>
+
+                            @foreach (FinishGoodItem Item in Model.ProductCode2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn9" id="rdBtn9" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Item.Code)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Item.Description)
+                                    </td>
+
+
+                                </tr>
+                            }
+                        </table>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub9" class="btn btn-default" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

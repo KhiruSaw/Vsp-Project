@@ -1,0 +1,217 @@
+﻿@using VSPApplication.Models;
+@model dynamic
+@{
+    ViewBag.Title = "FilterOption7330";
+    Layout = "~/Views/Shared/_filterView.cshtml";
+}
+
+
+@using (Html.BeginForm("FilterOption7330", "Report", FormMethod.Post, new { id = "Report" }))
+{
+    @*@Html.AntiForgeryToken()*@
+
+
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <input type="button" id="showDiv" class="btn btn-flat" value="+ Show Filter" />
+            </header>
+            <div class="panel-body" id="hideDiv">
+                <form role="form">
+                    <div class="row" >
+                        <div class="col-lg-12">
+                            <label>Box Set ID</label>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+
+                                @Html.DropDownList("BoxSetID", new List<SelectListItem> {
+                                        new SelectListItem {Text="*All Records",Value="*All Records" },
+                                        new SelectListItem {Text="Between Range",Value="Between Range" },
+                                       new SelectListItem {Text="Exact match",Value="Exact match" },
+                                       new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                       new SelectListItem {Text="Less Then",Value="Less Then" },
+                                       new SelectListItem {Text="Start With",Value="Start With" },
+                                       new SelectListItem {Text="End With",Value="End With" },
+                                       new SelectListItem {Text="Contains This",Value="Contains This" },
+                                        }, new { @class = "form-control", @id = "ddlBoxSetIDBL", @onchange = "SelectBoxSetIDBL()" })
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+
+
+                                <div class="input-group">
+                                    <input type="hidden" id="hdnBL" />
+                                    <input type="text" id="BoxSetID1BL" name="BoxSetID1BL" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["BoxSetID1BL"]} else {@ViewBag.BoxSetID1BL}" readonly />
+
+                                    <span class="input-group-btn">
+                                        <a id="bsanchor1" href='' data-toggle="modal" data-target="#myModal">
+                                            <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                        </a>
+                                    </span>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+
+                                <div class="input-group">
+                                    <input type="text" id="BoxSetID2BL" name="BoxSetID2BL" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["BoxSetID2BL"]} else {@ViewBag.BoxSetID2BL}" readonly />
+                                    <span class="input-group-btn">
+                                        <a id="bsanchor2" href='' data-toggle="modal" data-target="#myModal">
+                                            <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!--/row-->
+
+                </form>
+                <div class="col-lg-12">
+                    @*<button class="btn btn-primary">Submit</button>*@
+                    <input type="submit" class="btn btn-primary" name="filter" id="setvalid" value="Run Report Now" onclick="setvalue()" />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    @*<input type="button" class="btn btn-primary " value="Asyn Generate Report" onclick="location.href='@Url.Action("RunReportAsyn", "Report")'" />*@
+                    <input type="submit" class="btn btn-primary" name="filter" id="btnSubmit" onclick="return MessageShow()" value="Run as a Job and Notify" />
+
+
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+
+
+    <div>
+        @if (ViewBag.Filter == "Run Report Now")
+                {
+            <section class="panel">
+                <div class="panel-body table-responsive">
+                    <div id="reportData" style="width:100%;height:600px;overflow:scroll;">
+                        @using ReportViewerForMvc;
+                        @{
+                            ViewBag.Title = "VSP7330";
+                        }
+
+                        @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { height = "560px", width = "100%" })
+
+                    </div>
+                </div>
+
+            </section>
+                            }
+
+    </div>
+
+                            }
+
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">BoxSetID</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-12 searchfor">
+                    <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                    <div class="col-lg-3">
+                        @Html.DropDownList("BoxSetId", new List<SelectListItem> {
+                                            new SelectListItem {Text="Start With",Value="Start With" },
+                                             new SelectListItem {Text="End With",Value="End With" },
+                                              new SelectListItem {Text="Contains This",Value="Contains This" },
+                                             }, "---Select---", new { @id = "ddlBoxSetId", @class = "form-control" })
+                    </div>
+                    <div class="col-lg-3">
+                        @Html.DropDownList("BoxSetId1", new List<SelectListItem> {
+                                   new SelectListItem {Text="Box Set ID",Value="Box Set ID" },
+                                   new SelectListItem {Text="Ship To Name",Value="Ship To Name" },
+                                   new SelectListItem {Text="Description",Value="Description" },
+                                   new SelectListItem {Text="Customer PO",Value="Customer PO" },
+                                    }, "---Select---", new { @id = "ddlBoxSetId1", @class = "form-control" })
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="text" id="txtBoxSetId" class="form-control" name="txtBoxSetId" />
+                        <input type="hidden" id="hdnFinishGoodsItem" />
+                    </div>
+
+
+
+                </div>
+
+                <table class="table" id="table1BL">
+                    <br />
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                BoxSetID
+                            </th>
+                            <th>
+                                ShipToName
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                CustomerPO
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (BO_FilterOption bsi in Model.BoxSetID2)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="radio" name="rdBtn" id="rdBtn" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => bsi.BoxSetID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => bsi.ShipToName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => bsi.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => bsi.CustomerPO)
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSub" class="btn btn-default" data-dismiss="modal">OK</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

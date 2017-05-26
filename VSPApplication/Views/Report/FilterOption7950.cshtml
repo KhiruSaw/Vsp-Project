@@ -1,0 +1,229 @@
+﻿@using VSPApplication.Models;
+@model dynamic
+@{
+    ViewBag.Title = "FilterOption7330";
+    Layout = "~/Views/Shared/_filterView.cshtml";
+}
+
+
+@using (Html.BeginForm("FilterOption7950", "Report", FormMethod.Post, new { id = "Report" }))
+{
+   
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <input type="button" id="showDiv" class="btn btn-flat" value="+ Show Filter" />
+            </header>
+            <div class="panel-body" id="hideDiv">
+                <form role="form">
+                    <div class="row" >
+                        <div class="col-lg-12">
+                            <label>Generic Job Number</label>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+
+                                @Html.DropDownList("GenricJobNum", new List<SelectListItem> {
+                                        new SelectListItem {Text="*All Records",Value="*All Records" },
+                                        new SelectListItem {Text="Between Range",Value="Between Range" },
+                                       new SelectListItem {Text="Exact match",Value="Exact match" },
+                                       new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                       new SelectListItem {Text="Less Then",Value="Less Then" },
+
+                                        }, new { @class = "form-control", @id = "ddlGenricJobNum", @onchange = "SelectGenricJobNum()" })
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+
+
+                                <div class="input-group">
+                                    <input type="hidden" id="hdnGenricJobNum" />
+                                    <input type="text" id="GenricJobNum_Beg" name="GenricJobNum_Beg" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["GenricJobNum_Beg"]} else {@ViewBag.GenricJobNum_Beg}" readonly />
+
+                                    <span class="input-group-btn">
+                                        <a id="GenricJobNum_Beg_anchor" href='' data-toggle="modal" data-target="#GenricJobNum">
+                                            <button class="btn btn-white" type="button" onclick="FTotalPageCount2('7950', 'Generic Job Number');"><i class="fa fa-search"></i></button>
+                                        </a>
+                                    </span>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+
+                                <div class="input-group">
+                                    <input type="text" id="GenricJobNum_End" name="GenricJobNum_End" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["GenricJobNum_End"]} else {@ViewBag.GenricJobNum_End}" readonly />
+                                    <span class="input-group-btn">
+                                        <a id="GenricJobNum_End_anchor" href='' data-toggle="modal" data-target="#GenricJobNum">
+                                            <button class="btn btn-white" type="button" onclick="FTotalPageCount2('7950', 'Generic Job Number');"><i class="fa fa-search"></i></button>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!--/row-->
+
+                </form>
+                <div class="col-lg-12">
+                    @*<button class="btn btn-primary">Submit</button>*@
+                    <input type="submit" class="btn btn-primary" name="filter" id="setvalid" value="Run Report Now" onclick="setvalue()" />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    @*<input type="button" class="btn btn-primary " value="Asyn Generate Report" onclick="location.href='@Url.Action("RunReportAsyn", "Report")'" />*@
+                    <input type="submit" class="btn btn-primary" name="filter" id="btnSubmit" onclick="return MessageShow()" value="Run as a Job and Notify" />
+
+
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+
+       <!--Report-->
+    <div>
+        @if (ViewBag.Filter == "Run Report Now")
+                {
+            <section class="panel">
+                <div class="panel-body table-responsive">
+                    <div id="reportData" style="width:100%;height:600px;overflow:scroll;">
+                        @using ReportViewerForMvc;
+                        @{
+                            ViewBag.Title = "VSP7950";
+                        }
+
+                        @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { height = "560px", width = "100%" })
+
+                    </div>
+                </div>
+
+            </section>
+                            }
+    </div>
+
+                            }
+
+
+<div class="modal fade" id="GenricJobNum" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Genric Job Number</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-12 searchfor">
+                    <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                    <div class="col-lg-3">
+                        @Html.DropDownList("GenricJob_beg", new List<SelectListItem> {
+                                            new SelectListItem {Text="Start With",Value="Start With" },
+                                             new SelectListItem {Text="End With",Value="End With" },
+                                              new SelectListItem {Text="Contains This",Value="Contains This" },
+                                             },  new { @id = "ddlGenricJob_Beg", @class = "form-control" })
+                    </div>
+                    <div class="col-lg-3">
+                        @Html.DropDownList("GenricJob_end", new List<SelectListItem> {
+                                   new SelectListItem {Text="Generic Job ID",Value="Generic Job ID" },
+                                   new SelectListItem {Text="Description",Value="Description" },
+                                   new SelectListItem {Text="Date Ordered",Value="Date Ordered" },
+                                   new SelectListItem {Text="Bill To #",Value="Bill To #" },
+                                    new SelectListItem {Text="Customer PO",Value="Customer PO" },
+                                    },  new { @id = "ddlGenricJob_end", @class = "form-control" })
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="text" id="txtGenricJob" class="form-control" />
+                        <input type="hidden" id="hdnFinishGoodsItem" />
+                    </div>
+                </div>
+
+                <table class="table" id="tblGenricJob">
+                    <br />
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                Generic Job ID
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Date Ordered
+                            </th>
+                            <th>
+                                Bill To #
+                            </th>
+                            <th>
+                                Customer PO
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (BO_FilterOption bsi in Model.GenericJobNum)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="radio" name="rdBtnGenricJob" id="rdBtnGenricJob" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => bsi.GenericJobID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => bsi.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => bsi.DateOrdered)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => bsi.BillTo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => bsi.CustomerPO)
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer modal-footer-new1">
+
+                Page &nbsp; <label type="label" id="Increatement_PageCount_GenericJobNumber">1</label>
+                &nbsp; of &nbsp;<label type="label" id="Total_PageCount_GenericJobNumber">0</label> &nbsp; pages
+
+                <span style="margin-left: 390px;">
+                    <button type="button" id="0" onclick="F0_tblGenricJob();">First</button>
+                    <button type="button" id="-1" onclick="FMinus10_tblGenricJob();"><<</button>
+                    <button type="button" id="1" onclick="F1_tblGenricJob();">1</button>
+                    <button type="button" id="2" onclick="F2_tblGenricJob();">2</button>
+                    <button type="button" id="3" onclick="F3_tblGenricJob();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                    <button type="button" id="+1" onclick="FPluse10_tblGenricJob();">>></button>
+                    <button type="button" id="99" onclick="F99_tblGenricJob();">Last</button>
+                    <input type="hidden" id="Total_count_tblGenricJob" value="0" />
+                    <input type="hidden" id="count_tblGenricJob" />
+                    <input type="hidden" id="Total_row_count_tblGenricJob" value="300000" />
+                </span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnGenricJob" class="btn btn-primary" data-dismiss="modal">OK</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

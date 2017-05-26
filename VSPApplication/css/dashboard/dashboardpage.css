@@ -1,0 +1,30 @@
+﻿body {
+}
+ .txtcolor{
+        color:black;
+    }
+    #accordion .panel-heading {
+        padding: 0;
+    }
+
+    #accordion .panel-title > a {
+        display: block;
+             padding: 13px;
+    margin-bottom: 10px;
+        outline: none;
+        background-color:#a28ca5;
+        color:black;
+        /*font-weight:bold;*/
+        text-decoration: none;
+    }
+
+        #accordion .panel-title > a.accordion-toggle::before, #accordion a[data-toggle="collapse"]::before {
+            content: "\e113";
+            float: left;
+            font-family: 'Glyphicons Halflings';
+            margin-right: 1em;
+        }
+
+        #accordion .panel-title > a.accordion-toggle.collapsed::before, #accordion a.collapsed[data-toggle="collapse"]::before {
+            content: "\e114";
+        }

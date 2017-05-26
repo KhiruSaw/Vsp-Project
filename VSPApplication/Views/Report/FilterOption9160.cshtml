@@ -1,0 +1,1253 @@
+﻿@using VSPApplication.Models;
+@model dynamic
+@{
+    ViewBag.Title = "FilterOption9160";
+    Layout = "~/Views/Shared/_filterView.cshtml";
+}
+
+@using (Ajax.BeginForm("FilterOption9160", "Report", FormMethod.Post, null))
+{
+    <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            
+                        <div class="col-lg-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    <input type="button" id="showDiv" class="btn btn-flat" value="+ Show Filter" />
+                                </header>
+
+                                <div class="panel-body"  id="hideDiv">
+                                    <div class="row">
+                                        <div class="col-lg-6 borderdiv">
+                                            <form role="form">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <label>Finish Goods ID</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+                                                            @Html.DropDownList("FinishGoods", new List<SelectListItem> {
+                                        new SelectListItem {Text="*All Records",Value="*All Records" },
+                                        new SelectListItem {Text="Between Range",Value="Between Range" },
+                                       new SelectListItem {Text="Exact match",Value="Exact match" },
+                                       new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                       new SelectListItem {Text="Less Then",Value="Less Then" },
+                                       new SelectListItem {Text="Start With",Value="Start With" },
+                                       new SelectListItem {Text="End With",Value="End With" },
+                                       new SelectListItem {Text="Contains This",Value="Contains This" },
+                                        }, new { @class = "form-control", @id = "ddlFinishGoodsIDFGCC", @onchange = "SelectFinishGoodsIDFGCC()" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+
+                                                            <div class="input-group">
+                                                                <input type="hidden" id="hdnFGCC" />
+                                                                <input type="text" id="FinishGoodsIDFGCC" name="FinishGoodsIDFGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["FinishGoodsIDFGCC"]} else {@ViewBag.beg_finish_goods_id}" readonly />
+
+                                                                <span class="input-group-btn">
+                                                                    <a id="fgifgccanchor1" href='' data-toggle="modal" data-target="#myModal">
+                                                                        <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Finish Goods ID');"><i class="fa fa-search"></i></button>
+                                                                    </a>
+                                                                </span>
+
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+                                                            <div class="input-group">
+                                                                <input type="text" id="FinishGoodsID2FGCC" name="FinishGoodsID2FGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["FinishGoodsID2FGCC"]} else {@ViewBag.end_finish_goods_id}" readonly />
+                                                                <span class="input-group-btn">
+                                                                    <a id="fgifgccanchor2" href='' data-toggle="modal" data-target="#myModal">
+                                                                        <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Finish Goods ID');"><i class="fa fa-search"></i></button>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div><!--/row-->
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <label>Finished Goods Description</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            @Html.DropDownList("DescriptionFGCC", new List<SelectListItem> {
+                                         new SelectListItem {Text="*All Records",Value="*All Records" },
+                                        new SelectListItem {Text="Between Range",Value="Between Range" },
+                                       new SelectListItem {Text="Exact match",Value="Exact match" },
+                                       new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                       new SelectListItem {Text="Less Then",Value="Less Then" },
+                                       new SelectListItem {Text="Start With",Value="Start With" },
+                                       new SelectListItem {Text="End With",Value="End With" },
+                                       new SelectListItem {Text="Contains This",Value="Contains This" },
+                                      }, new { @class = "form-control", @id = "ddlDescriptionFGCC", @onchange = "SelectDescriptionFGCC()" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+
+                                                            <div class="input-group">
+                                                                <input type="text" id="Description1FGCC" name="Description1FGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["Description1FGCC"]} else {@ViewBag.beg_finish_goods_name}" readonly />
+
+                                                                <span class="input-group-btn">
+                                                                    <a id="dfgccanchor1" href='' data-toggle="modal" data-target="#myModal2">
+                                                                        <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Finish Goods Description');"><i class="fa fa-search"></i></button>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+                                                            <div class="input-group">
+                                                                <input type="text" id="Description2FGCC" name="Description2FGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["Description2FGCC"]} else {@ViewBag.end_finish_goods_name}" readonly />
+                                                                <span class="input-group-btn">
+                                                                    <a id="dfgccanchor2" href='' data-toggle="modal" data-target="#myModal2">
+                                                                        <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Finish Goods Description');"><i class="fa fa-search"></i></button>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div><!--/row-->
+                                                <div class="row" >
+                                                    <div class="col-lg-12">
+                                                        <label>Inventory Type</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            @Html.DropDownList("InventoryType", new List<SelectListItem> {
+                                                    new SelectListItem {Text="*All Records",Value="*All Records" },
+                                                    new SelectListItem {Text="Between Range",Value="Between Range" },
+                                                   new SelectListItem {Text="Exact match",Value="Exact match" },
+                                                   new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                                   new SelectListItem {Text="Less Then",Value="Less Then" },              
+                                                    }, new { @class = "form-control", @id = "ddlInventoryTypeFGCC", @onchange = "SelectInventoryTypeFGCC()" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+
+                                                            <div class="input-group">
+                                                                <input type="text" id="InventoryType1FGCC" name="InventoryType1FGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["InventoryType1FGCC"]} else {@ViewBag.beg_inventory_type}" readonly />
+
+                                                                <span class="input-group-btn">
+                                                                    <a id="itfgccanchor1" href='' data-toggle="modal" data-target="#myModal3">
+                                                                        <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Inventory Type');"><i class="fa fa-search"></i></button>
+                                                                    </a>
+                                                                </span>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+                                                            <div class="input-group">
+                                                                <input type="text" id="InventoryType2FGCC" name="InventoryType2FGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["InventoryType2FGCC"]} else {@ViewBag.end_inventory_type}" readonly />
+                                                                <span class="input-group-btn">
+                                                                    <a id="itfgccanchor2" href='' data-toggle="modal" data-target="#myModal3">
+                                                                        <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Inventory Type');"><i class="fa fa-search"></i></button>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div><!--/row-->
+                                                <div class="row" >
+                                                    <div class="col-lg-12">
+                                                        <label>Kind Code</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            @Html.DropDownList("Kindcode", new List<SelectListItem> {
+                                                    new SelectListItem {Text="*All Records",Value="*All Records" },
+                                                    new SelectListItem {Text="Between Range",Value="Between Range" },
+                                                   new SelectListItem {Text="Exact match",Value="Exact match" },
+                                                   new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                                   new SelectListItem {Text="Less Then",Value="Less Then" },
+                                                    }, new { @class = "form-control", @id = "ddlKindcodeFGCC", @onchange = "SelectKindcodeFGCC()" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input type="text" id="Kindcode1FGCC" name="Kindcode1FGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["Kindcode1FGCC"]} else {@ViewBag.beg_kind}" readonly />
+
+                                                                <span class="input-group-btn">
+                                                                    <a id="kcfgccanchor1" href='' data-toggle="modal" data-target="#myModal4">
+                                                                        <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Kind Code');"><i class="fa fa-search"></i></button>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+                                                            <div class="input-group">
+                                                                <input type="text" id="Kindcode2FGCC" name="Kindcode2FGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["Kindcode2FGCC"]} else {@ViewBag.end_kind}" readonly />
+                                                                <span class="input-group-btn">
+                                                                    <a id="kcfgccanchor2" href='' data-toggle="modal" data-target="#myModal4">
+                                                                        <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Kind Code');"><i class="fa fa-search"></i></button>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div><!--/row-->
+                                                <div class="row" >
+                                                    <div class="col-lg-12">
+                                                        <label>Warehouse</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            @Html.DropDownList("Warehouse", new List<SelectListItem> {
+                                                    new SelectListItem {Text="*All Records",Value="*All Records" },
+                                                    new SelectListItem {Text="Between Range",Value="Between Range" },
+                                                   new SelectListItem {Text="Exact match",Value="Exact match" },
+                                                   new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                                   new SelectListItem {Text="Less Then",Value="Less Then" },
+                                                    }, new { @class = "form-control", @id = "ddlWarehouseFGCC", @onchange = "SelectWarehouseFGCC()" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input type="text" id="Warehouse1FGCC" name="Warehouse1FGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["Warehouse1FGCC"]} else {@ViewBag.beg_warehouse}" readonly />
+
+                                                                <span class="input-group-btn">
+                                                                    <a id="whfgccanchor1" href='' data-toggle="modal" data-target="#myModal5">
+                                                                        <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Warehouse');"><i class="fa fa-search"></i></button>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+                                                            <div class="input-group">
+                                                                <input type="text" id="Warehouse2FGCC" name="Warehouse2FGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["Warehouse2FGCC"]} else {@ViewBag.end_warehouse}" readonly />
+                                                                <span class="input-group-btn">
+                                                                    <a id="whfgccanchor2" href='' data-toggle="modal" data-target="#myModal5">
+                                                                        <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Warehouse');"><i class="fa fa-search"></i></button>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div><!--/row-->
+                                                    <div class="row" >
+                                                        <div class="col-lg-12">
+                                                            <label>Location</label>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                @Html.DropDownList("LocationFGCC", new List<SelectListItem> {
+                                                         new SelectListItem {Text="*All Records",Value="*All Records" },
+                                                        new SelectListItem {Text="Between Range",Value="Between Range" },
+                                                       new SelectListItem {Text="Exact match",Value="Exact match" },
+                                                       new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                                       new SelectListItem {Text="Less Then",Value="Less Then" },
+                                                       new SelectListItem {Text="Start With",Value="Start With" },
+                                                       new SelectListItem {Text="End With",Value="End With" },
+                                                       new SelectListItem {Text="Contains This",Value="Contains This" },
+                                                      }, new { @class = "form-control", @id = "ddlLocationFGCC", @onchange = "SelectLocationFGCC()" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <div class="input-group">
+                                                                    <input type="text" id="Location1FGCC" name="Location1FGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["Location1FGCC"]} else {@ViewBag.beg_location}" readonly />
+
+                                                                    <span class="input-group-btn">
+                                                                        <a id="lofgccanchor1" href='' data-toggle="modal" data-target="#myModal6">
+                                                                            <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Location');"><i class="fa fa-search"></i></button>
+                                                                        </a>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+
+                                                                <div class="input-group">
+                                                                    <input type="text" id="Location2FGCC" name="Location2FGCC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["Location2FGCC"]} else {@ViewBag.end_location}" readonly />
+                                                                    <span class="input-group-btn">
+                                                                        <a id="lofgccanchor2" href='' data-toggle="modal" data-target="#myModal6">
+                                                                            <button class="btn btn-white" type="button" onclick="FTotalPageCount4('9160', 'Location');"><i class="fa fa-search"></i></button>
+                                                                        </a>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--/row-->
+                                              
+                                                <div class="row" >
+                                                    <div class="col-lg-12">
+                                                        <label>Date Last Activity</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            @Html.DropDownList("DateLastActivity", new List<SelectListItem> {
+                                                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                                                new SelectListItem {Text="Between Range",Value="Between Range" },
+                                               new SelectListItem {Text="Exact match",Value="Exact match" },
+                                               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                               new SelectListItem {Text="Less Then",Value="Less Then" },
+                                                }, new { @class = "form-control", @id = "ddlDateLastActivity", @onchange = "SelectDateLastActivity()" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <div class="input-group" id="datedivDateLastActivity1FGCC">
+                                                                @*<input type="text" id="DateShipped1" name="DateShipped1" value="*All Records" disabled>*@
+                                                                <input type="text" class="form-control" id="DateLastActivity1FGCC" name="DateLastActivity1FGCC" value="@ViewBag.DateLastActivity1FGCC" readonly>
+
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                                            </div>
+
+                                                            <div class="input-group" id="rangevaldivDateLastActivity1FGCC" style="width:100%;">
+                                                                <input type="text" class="form-control" id="rangevalDateLastActivity1FGCC" name="rangevalDateLastActivity1FGCC" value="@ViewBag.rangevalDateLastActivity1FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+                                                            <div class="input-group" id="datedivDateLastActivity2FGCC">
+                                                                @*<input type="text" id="DateShipped2" name="DateShipped2" value="0" disabled>*@
+                                                                <input type="text" class="form-control" id="DateLastActivity2FGCC" value="@ViewBag.DateLastActivity2FGCC" name="DateLastActivity2FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                                            </div>
+                                                            <div class="input-group" id="rangevaldivDateLastActivity2FGCC" style="width:100%;">
+                                                                <input type="text" class="form-control" id="rangevalDateLastActivity2FGCC" name="rangevalDateLastActivity2FGCC" value="@ViewBag.rangevalDateLastActivity2FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div><!--/row-->
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <label>Date Last Recieved</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            @Html.DropDownList("DateLastRecieved", new List<SelectListItem> {
+                                                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                                                new SelectListItem {Text="Between Range",Value="Between Range" },
+                                               new SelectListItem {Text="Exact match",Value="Exact match" },
+                                               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                               new SelectListItem {Text="Less Then",Value="Less Then" },
+                                                }, new { @class = "form-control", @id = "ddlDateLastRecieved", @onchange = "SelectDateLastRecieved()" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <div class="input-group" id="datedivDateLastRecieved1FGCC">
+                                                                @*<input type="text" id="DateShipped1" name="DateShipped1" value="*All Records" disabled>*@
+                                                                <input type="text" class="form-control" id="DateLastRecieved1FGCC" name="DateLastRecieved1FGCC" value="@ViewBag.DateLastRecieved1FGCC" readonly>
+
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                                            </div>
+
+                                                            <div class="input-group" id="rangevaldivDateLastRecieved1FGCC" style="width:100%;">
+                                                                <input type="text" class="form-control" id="rangevalDateLastRecieved1FGCC" name="rangevalDateLastRecieved1FGCC" value="@ViewBag.rangevalDateLastRecieved1FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+                                                            <div class="input-group" id="datedivDateLastRecieved2FGCC">
+                                                                @*<input type="text" id="DateShipped2" name="DateShipped2" value="0" disabled>*@
+                                                                <input type="text" class="form-control" id="DateLastRecieved2FGCC" value="@ViewBag.DateLastRecieved2FGCC" name="DateLastRecieved2FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                                            </div>
+                                                            <div class="input-group" id="rangevaldivDateLastRecieved2FGCC" style="width:100%;">
+                                                                <input type="text" class="form-control" id="rangevalDateLastRecieved2FGCC" name="rangevalDateLastRecieved2FGCC" value="@ViewBag.rangevalDateLastRecieved2FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div><!--/row-->
+                                                <div class="row" >
+                                                    <div class="col-lg-12">
+                                                        <label>Date Last Shiped</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            @Html.DropDownList("DateLastShiped", new List<SelectListItem> {
+                                                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                                                new SelectListItem {Text="Between Range",Value="Between Range" },
+                                               new SelectListItem {Text="Exact match",Value="Exact match" },
+                                               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                               new SelectListItem {Text="Less Then",Value="Less Then" },
+                                                }, new { @class = "form-control", @id = "ddlDateLastShipedFGCC", @onchange = "SelectDateLastShipedFGCC()" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <div class="input-group" id="datediv1DateLastShipedFGCC">
+                                                                @*<input type="text" id="DateShipped1" name="DateShipped1" value="*All Records" disabled>*@
+                                                                <input type="text" class="form-control" id="DateLastShiped1FGCC" name="DateLastShiped1FGCC" value="@ViewBag.DateLastShiped1FGCC" readonly>
+
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                                            </div>
+
+                                                            <div class="input-group" id="rangevaldivDateLastShiped1FGCC" style="width:100%;">
+                                                                <input type="text" class="form-control" id="rangevalDateLastShiped1FGCC" name="rangevalDateLastShiped1FGCC" value="@ViewBag.rangevalDateLastActivity1FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+                                                            <div class="input-group" id="datediv2DateLastShipedFGCC">
+                                                                @*<input type="text" id="DateShipped2" name="DateShipped2" value="0" disabled>*@
+                                                                <input type="text" class="form-control" id="DateLastShiped2FGCC" value="@ViewBag.DateLastShiped2FGCC" name="DateLastShiped2FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                                            </div>
+                                                            <div class="input-group" id="rangevaldivDateLastShiped2FGCC" style="width:100%;">
+                                                                <input type="text" class="form-control" id="rangevalDateLastShiped2FGCC" name="rangevalDateLastShiped2FGCC" value="@ViewBag.rangevalDateLastShiped2FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div><!--/row-->
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <label>Date Last Adjusted</label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            @Html.DropDownList("DateLastAdjusted", new List<SelectListItem> {
+                                                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                                                new SelectListItem {Text="Between Range",Value="Between Range" },
+                                               new SelectListItem {Text="Exact match",Value="Exact match" },
+                                               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                               new SelectListItem {Text="Less Then",Value="Less Then" },
+                                                }, new { @class = "form-control", @id = "ddlDateLastAdjustedFGCC", @onchange = "SelectDateLastAdjustedFGCC()" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+                                                            <div class="input-group" id="datediv1DateLastAdjustedFGCC">
+                                                                @*<input type="text" id="DateShipped1" name="DateShipped1" value="*All Records" disabled>*@
+                                                                <input type="text" class="form-control" id="DateLastAdjusted1FGCC" name="DateLastAdjusted1FGCC" value="@ViewBag.DateLastAdjusted1FGCC" readonly>
+
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                                            </div>
+
+                                                            <div class="input-group" id="rangevaldivDateLastAdjusted1FGCC" style="width:100%;">
+                                                                <input type="text" class="form-control" id="rangevalDateLastAdjusted1FGCC" name="rangevalDateLastAdjusted1FGCC" value="@ViewBag.rangevalDateLastAdjusted1FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+
+                                                            <div class="input-group" id="datediv2DateLastAdjustedFGCC">
+                                                                @*<input type="text" id="DateShipped2" name="DateShipped2" value="0" disabled>*@
+                                                                <input type="text" class="form-control" id="DateLastAdjusted2FGCC" value="@ViewBag.DateLastAdjusted2FGCC" name="DateLastAdjusted2FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                                            </div>
+                                                            <div class="input-group" id="rangevaldivDateLastAdjusted2FGCC" style="width:100%;">
+                                                                <input type="text" class="form-control" id="rangevalDateLastAdjusted2FGCC" name="rangevalDateLastAdjusted2FGCC" value="@ViewBag.rangevalDateLastAdjusted1FGCC" readonly>
+                                                                <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div><!--/row-->
+                                            
+                                            </form>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-md-12"><legend>Skip Zero Quantity</legend></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-5"><label style="margin-top: 6px;margin-left: 10px;">Remove 0 on hand items</label></div>
+                                                <div class="col-md-7">
+                                                    <select class="form-control" name="dllskip" id="dllskip">
+                                                        <option>Yes</option>
+                                                        <option>No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-md-12"><legend>Quantity Type</legend></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-5"><label style="margin-top: 6px;margin-left: 10px;">Type of quantities to show</label></div>
+                                                <div class="col-md-7">
+                                                    <select class="form-control" name="dllQuantityType" id="dllQuantityType">
+                                                        <option>All Quantities</option>
+                                                        <option>Positives Only</option>
+                                                        <option>Negatives Only</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-md-12"><legend>1).Sorting</legend></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-5"><label style="margin-top: 6px;margin-left: 10px;">Sort report by</label></div>
+                                                <div class="col-md-7">
+                                                    <select class="form-control" name="dllsorting" id="dllsorting7160">
+                                                        <option>Finish Goods</option>
+                                                        <option>Location</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="row" style="margin-top:5px;">
+                                        <div class="form-group">
+                                            <div class="col-lg-12">
+                                                <input type="submit" class="btn btn-primary" name="filter" id="btnSubmit" value="Run Report Now" />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                @*<input type="button" class="btn btn-primary " value="Asyn Generate Report" onclick="location.href='@Url.Action("RunReportAsyn", "Report")'" />*@
+                                                <input type="submit" class="btn btn-primary" name="filter" id="btnSubmit" onclick="return MessageShow()" value="Run as a Job and Notify" />
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </section>
+                        </div>
+
+                 
+                    <!--Report-->
+    <div>
+        @if (ViewBag.Filter == "Run Report Now")
+        {
+            <section class="panel">
+                <div class="panel-body table-responsive">
+
+                    <div id="reportData" style="width:100%;height:600px;overflow:scroll;">
+                        @using ReportViewerForMvc;
+                        @{
+                            ViewBag.Title = "VSP9160";
+                        }
+
+                        @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { height = "560px", width = "100%" })
+
+                    </div>
+
+
+                </div>
+            </section>
+                            }
+    </div>
+                            }
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">FinishGoodID</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12 searchfor">
+                    <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                    <div class="col-lg-3">
+                        @Html.DropDownList("FinishGoodsID1FGCCP", new List<SelectListItem> {
+                                            new SelectListItem {Text="Start With",Value="Start With" },
+                                             new SelectListItem {Text="End With",Value="End With" },
+                                              new SelectListItem {Text="Contains This",Value="Contains This" },
+                                             },  new { @id = "ddlFinishGoodsID1FGCCP", @class = "form-control" })
+                    </div>
+                    <div class="col-lg-3">
+                        @Html.DropDownList("FinishGoodsID2FGCCP", new List<SelectListItem> {
+                                   new SelectListItem {Text="Finished Good",Value="Finished Good" },
+                                   new SelectListItem {Text="Description",Value="Description" },
+                                   new SelectListItem {Text="Customer Part",Value="Customer Part" },
+                                   new SelectListItem {Text="Customer ID",Value="Customer ID" },
+                                   new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                                    },  new { @id = "ddlFinishGoodsID2FGCCP", @class = "form-control" })
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="text" id="txtFinishGoodsID2FGCCP" class="form-control" />
+                        @*<input type="hidden" id="hdnFinishGoodsItem" />*@
+                    </div>
+
+                </div>
+
+
+                <table class="table" id="tablefgiFGCC">
+                    <br />
+                    <thead>
+
+                        <tr>
+                            <th></th>
+                            <th>
+                                Description
+                            </th>
+
+
+                            <th>
+                                FinishedGood
+                            </th>
+                            <th>
+                                CustomerPart
+                            </th>
+                            <th>
+                                CustomerID
+                            </th>
+                            <th>
+                                CustomerName
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (BO_FilterOption fgi in Model.FinishGoodID2)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="radio" name="rdBtn" id="rdBtn" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => fgi.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => fgi.FinishedGood)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => fgi.CustomerPart)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => fgi.CustomerID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => fgi.CustomerName)
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer modal-footer-new1">
+
+                Page &nbsp; <label type="label" id="Increatement_PageCount_FinishGoodsID">1</label>
+                &nbsp; of &nbsp;<label type="label" id="Total_PageCount_FinishGoodsID">0</label> &nbsp; pages
+
+                <span style="margin-left: 390px;">
+                    <button type="button" id="0" onclick="F0_tablefgiFGCC();">First</button>
+                    <button type="button" id="-1" onclick="FMinus10_tablefgiFGCC();"><<</button>
+                    <button type="button" id="1" onclick="F1_tablefgiFGCC();">1</button>
+                    <button type="button" id="2" onclick="F2_tablefgiFGCC();">2</button>
+                    <button type="button" id="3" onclick="F3_tablefgiFGCC();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                    <button type="button" id="+1" onclick="FPluse10_tablefgiFGCC();">>></button>
+                    <button type="button" id="99" onclick="F99_tablefgiFGCC();">Last</button>
+                    <input type="hidden" id="Total_count_tablefgiFGCC" value="0" />
+                    <input type="hidden" id="count_tablefgiFGCC" />
+                    <input type="hidden" id="Total_row_count_tablefgiFGCC" value="300000" />
+                </span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSub" class="btn btn-primary" data-dismiss="modal">OK</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>     
+
+
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Description</h4>
+                </div>
+                <div class="modal-body">
+
+
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("Description1FGCC", new List<SelectListItem> {
+                       new SelectListItem {Text="Start With",Value="Start With" },
+                       new SelectListItem {Text="End With",Value="End With" },
+                       new SelectListItem {Text="Contains This",Value="Contains This" },
+                        },  new { @id = "ddlDescription1FGCC", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("Description2FGCC", new List<SelectListItem> {
+                       new SelectListItem {Text="Description",Value="Description" },
+                       new SelectListItem {Text="Finished Good",Value="Finished Good" },
+                       new SelectListItem {Text="Customer Part",Value="Customer Part" },
+                       new SelectListItem {Text="Customer ID",Value="Customer ID" },
+                        new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                        }, new { @id = "ddlDescription2FGCC", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtDescriptionFGCC" class="form-control" />
+                            @*<input type="hidden" id="hdnFinishGoodsItem" />*@
+                        </div>
+
+                    </div>
+
+                    <br />
+                    <table class="table" id="tabledecFGCC">
+                        <thead>
+
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Finished Good
+                                </th>
+                                <th>
+                                    Customer Part
+                                </th>
+                                <th>
+                                    Customer ID
+                                </th>
+                                <th>
+                                    Customer Name
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption des in Model.FinishGoodDescription2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn2" id="rdBtn2" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => des.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => des.FinishedGood)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => des.CustomerPart)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => des.CustomerID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => des.CustomerName)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer modal-footer-new1">
+
+                    Page &nbsp; <label type="label" id="Increatement_PageCount_FinishGoodsDescription">1</label>
+                    &nbsp; of &nbsp;<label type="label" id="Total_PageCount_FinishGoodsDescription">0</label> &nbsp; pages
+
+                    <span style="margin-left: 390px;">
+                        <button type="button" id="0" onclick="F0_tabledecFGCC();">First</button>
+                        <button type="button" id="-1" onclick="FMinus10_tabledecFGCC();"><<</button>
+                        <button type="button" id="1" onclick="F1_tabledecFGCC();">1</button>
+                        <button type="button" id="2" onclick="F2_tabledecFGCC();">2</button>
+                        <button type="button" id="3" onclick="F3_tabledecFGCC();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                        <button type="button" id="+1" onclick="FPluse10_tabledecFGCC();">>></button>
+                        <button type="button" id="99" onclick="F99_tabledecFGCC();">Last</button>
+                        <input type="hidden" id="Total_count_tabledecFGCC" value="0" />
+                        <input type="hidden" id="count_tabledecFGCC" />
+                        <input type="hidden" id="Total_row_count_tabledecFGCC" value="300000" />
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub2" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal3" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Inventory Type</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+
+                        <div class="col-lg-3">
+                            @Html.DropDownList("InventoryType1FGCC", new List<SelectListItem> {
+                           new SelectListItem {Text="Start With",Value="Start With" },
+                           new SelectListItem {Text="End With",Value="End With" },
+                           new SelectListItem {Text="Contains This",Value="Contains This" },
+                            },  new { @id = "ddlInventoryType1FGCC", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("InventoryType2FGCC", new List<SelectListItem> {
+                           new SelectListItem {Text="Inventory Type",Value="Inventory Type" },
+                           new SelectListItem {Text="Model Name",Value="Model Name" },
+                            new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                            }, new { @id = "ddlInventoryType2FGCC", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtInventoryTypeFGCC" class="form-control" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </div>
+                    </div>
+
+                    <br />
+                    <table class="table" id="tableitFGCC">
+                        <thead>
+
+                            <tr>
+                                <th></th>
+
+                                <th>
+                                    Inventory Type
+                                </th>
+                                <th>
+                                    Model Name
+                                </th>
+                                <th>
+                                    Customer Name
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption it in Model.InventoryType2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn3" id="rdBtn3" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => it.InventoryType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => it.ModelName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => it.CustomerName)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer modal-footer-new1">
+
+                    Page &nbsp; <label type="label" id="Increatement_PageCount_InventoryType">1</label>
+                    &nbsp; of &nbsp;<label type="label" id="Total_PageCount_InventoryType">0</label> &nbsp; pages
+
+                    <span style="margin-left: 390px;">
+                        <button type="button" id="0" onclick="F0_tableitFGCC();">First</button>
+                        <button type="button" id="-1" onclick="FMinus10_tableitFGCC();"><<</button>
+                        <button type="button" id="1" onclick="F1_tableitFGCC();">1</button>
+                        <button type="button" id="2" onclick="F2_tableitFGCC();">2</button>
+                        <button type="button" id="3" onclick="F3_tableitFGCC();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                        <button type="button" id="+1" onclick="FPluse10_tableitFGCC();">>></button>
+                        <button type="button" id="99" onclick="F99_tableitFGCC();">Last</button>
+                        <input type="hidden" id="Total_count_tableitFGCC" value="0" />
+                        <input type="hidden" id="count_tableitFGCC" />
+                        <input type="hidden" id="Total_row_count_tableitFGCC" value="300000" />
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub3" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal4" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Kind code</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+
+                        <div class="col-lg-3">
+                            @Html.DropDownList("Kindcode1FGCC", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, new { @id = "ddlKindcode1FGCC", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("Kindcode2FGCC", new List<SelectListItem> {
+               new SelectListItem {Text="Kind Code",Value="Kind Code" },
+               new SelectListItem {Text="Customer Name",Value="Customer Name" },           
+                }, new { @id = "ddlKindcode2FGCC", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtKindcodeFGCC" class="form-control" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </div>
+
+                    </div>
+
+                    <br />
+
+                    <table class="table" id="tablekcFGCC">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Kind Code
+                                </th>
+                                <th>
+                                    Customer Name
+                                </th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption kc in Model.KindCode2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn4" id="rdBtn4" />
+                                    </td>                                   
+                                    <td>
+                                        @Html.DisplayFor(modelItem => kc.KindCode)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => kc.CustomerName)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer modal-footer-new1">
+
+                    Page &nbsp; <label type="label" id="Increatement_PageCount_KindCode">1</label>
+                    &nbsp; of &nbsp;<label type="label" id="Total_PageCount_KindCode">0</label> &nbsp; pages
+
+                    <span style="margin-left: 390px;">
+                        <button type="button" id="0" onclick="F0_tablekcFGCC();">First</button>
+                        <button type="button" id="-1" onclick="FMinus10_tablekcFGCC();"><<</button>
+                        <button type="button" id="1" onclick="F1_tablekcFGCC();">1</button>
+                        <button type="button" id="2" onclick="F2_tablekcFGCC();">2</button>
+                        <button type="button" id="3" onclick="F3_tablekcFGCC();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                        <button type="button" id="+1" onclick="FPluse10_tablekcFGCC();">>></button>
+                        <button type="button" id="99" onclick="F99_tablekcFGCC();">Last</button>
+                        <input type="hidden" id="Total_count_tablekcFGCC" value="0" />
+                        <input type="hidden" id="count_tablekcFGCC" />
+                        <input type="hidden" id="Total_row_count_tablekcFGCC" value="300000" />
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub4" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal5" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Warehouse</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12 searchfor">
+
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("Warehouse1FGCC", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, new { @id = "ddlWarehouse1FGCC", @class = "form-control" })
+
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("Warehouse2FGCC", new List<SelectListItem> {
+               new SelectListItem {Text="Warehouse",Value="Warehouse" },
+               new SelectListItem {Text="Name",Value="Name" },            
+                },  new { @id = "ddlWarehouse2FGCC", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" id="txtWarehouse" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </div>
+                    </div>
+
+                    <br />
+                    <table class="table" id="tablewhFGCC">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Warehouse
+                                </th>
+                                <th>
+                                    Name
+                                </th>                              
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption wh in Model.WareHouse2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn5" id="rdBtn5" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => wh.Warehouse)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => wh.WarehouseName)
+                                    </td>                                   
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer modal-footer-new1">
+                    Page &nbsp; <label type="label" id="Increatement_PageCount_Warehouse">1</label>
+                    &nbsp; of &nbsp;<label type="label" id="Total_PageCount_Warehouse">0</label> &nbsp; pages
+
+                    <span style="margin-left: 390px;">
+                        <button type="button" id="0" onclick="F0_tablewhFGCC();">First</button>
+                        <button type="button" id="-1" onclick="FMinus10_tablewhFGCC();"><<</button>
+                        <button type="button" id="1" onclick="F1_tablewhFGCC();">1</button>
+                        <button type="button" id="2" onclick="F2_tablewhFGCC();">2</button>
+                        <button type="button" id="3" onclick="F3_tablewhFGCC();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                        <button type="button" id="+1" onclick="FPluse10_tablewhFGCC();">>></button>
+                        <button type="button" id="99" onclick="F99_tablewhFGCC();">Last</button>
+                        <input type="hidden" id="Total_count_tablewhFGCC" value="0" />
+                        <input type="hidden" id="count_tablewhFGCC" />
+                        <input type="hidden" id="Total_row_count_tablewhFGCC" value="300000" />
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub5" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal6" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Location</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("Location1FGCC", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, new { @id = "ddlLocation1FGCC", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("Location2FGCC", new List<SelectListItem> {
+               new SelectListItem {Text="Location",Value="Location" },
+               new SelectListItem {Text="Shelf",Value="Shelf" },
+               new SelectListItem {Text="Section",Value="Section" },
+               new SelectListItem {Text="Bin",Value="Bin" },              
+                }, new { @id = "ddlLocation2FGCC", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtLocation" class="form-control" />
+                            <input type="hidden" id="hdnFinishGoodsItem" />
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+
+                        <br />
+                        <table class="table" id="tablelocFGCC">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        Location
+                                    </th>
+                                    <th>
+                                        Shelf
+                                    </th>
+                                    <th>
+                                        Section
+                                    </th>
+                                    <th>
+                                        Bin
+                                    </th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (BO_FilterOption loc in Model.Location2)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="radio" name="rdBtn6" id="rdBtn6" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => loc.Location)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => loc.Shelf)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => loc.Section)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => loc.Bin)
+                                        </td>                                        
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer modal-footer-new1">
+                    Page &nbsp; <label type="label" id="Increatement_PageCount_Location">1</label>
+                    &nbsp; of &nbsp;<label type="label" id="Total_PageCount_Location">0</label> &nbsp; pages
+
+                    <span style="margin-left: 390px;">
+                        <button type="button" id="0" onclick="F0_tablelocFGCC();">First</button>
+                        <button type="button" id="-1" onclick="FMinus10_tablelocFGCC();"><<</button>
+                        <button type="button" id="1" onclick="F1_tablelocFGCC();">1</button>
+                        <button type="button" id="2" onclick="F2_tablelocFGCC();">2</button>
+                        <button type="button" id="3" onclick="F3_tablelocFGCC();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                        <button type="button" id="+1" onclick="FPluse10_tablelocFGCC();">>></button>
+                        <button type="button" id="99" onclick="F99_tablelocFGCC();">Last</button>
+                        <input type="hidden" id="Total_count_tablelocFGCC" value="0" />
+                        <input type="hidden" id="count_tablelocFGCC" />
+                        <input type="hidden" id="Total_row_count_tablelocFGCC" value="300000" />
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub7" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

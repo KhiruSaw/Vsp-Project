@@ -1,0 +1,273 @@
+﻿@using VSPApplication.Models;
+@model dynamic
+@{
+    ViewBag.Title = "FilterOption8610";
+    Layout = "~/Views/Shared/_filterView.cshtml";
+}
+
+
+@using (Html.BeginForm("FilterOption8610", "Report", FormMethod.Post, new { id = "Report" }))
+{
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <input type="button" id="showDiv" class="btn btn-flat" value="+ Show Filter" />
+
+            </header>
+            <div class="panel-body" id="hideDiv">
+                <form role="form">
+                    <div class="row" >
+                        <div class="col-lg-12">
+                            <label>Cost Center</label>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+
+                                @Html.DropDownList("CostCenter", new List<SelectListItem> {
+                                                new SelectListItem {Text="*All Records",Value="*All Records" },
+                                                new SelectListItem {Text="Between Range",Value="Between Range" },
+                                               new SelectListItem {Text="Exact match",Value="Exact match" },
+                                               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                               new SelectListItem {Text="Less Then",Value="Less Then" },
+                                                new SelectListItem {Text="Starts With",Value="Starts With" },
+                                                 new SelectListItem {Text="Ends With",Value="Ends With" },
+                                                  new SelectListItem {Text="Contains This",Value="Contains This" },
+                                        }, new { @class = "form-control", @id = "ddlCostCenterCC", @onchange = "SelectCostCenterCC()" })
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+
+
+                                <div class="input-group">
+                                    <input type="hidden" id="hdnCC" />
+                                    <input type="text" id="CostCenter1CC" name="CostCenter1CC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["CostCenter1CC"]} else {@ViewBag.CostCenter1CC}" readonly />
+
+                                    <span class="input-group-btn">
+                                        <a id="ccanchor1" href='' data-toggle="modal" data-target="#myModal1">
+                                            <button class="btn btn-white" type="button" onclick="FTotalPageCount3('8610', 'Cost Center');"><i class="fa fa-search"></i></button>
+                                        </a>
+                                    </span>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+
+                                <div class="input-group">
+                                    <input type="text" id="CostCenter2CC" name="CostCenter2CC" class="form-control" value="@if(ViewBag.Filter == "Run Report Now") { @Request["CostCenter2CC"]} else {@ViewBag.CostCenter2CC}" readonly />
+                                    <span class="input-group-btn">
+                                        <a id="ccanchor2" href='' data-toggle="modal" data-target="#myModal1">
+                                            <button class="btn btn-white" type="button" onclick="FTotalPageCount3('8610', 'Cost Center');"><i class="fa fa-search"></i></button>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!--/row-->
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label>Date</label>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                @Html.DropDownList("DateCC", new List<SelectListItem> {
+                 new SelectListItem {Text="*All Records",Value="*All Records" },
+                new SelectListItem {Text="Between Range",Value="Between Range" },
+               new SelectListItem {Text="Exact match",Value="Exact match" },
+               new SelectListItem {Text="Greater Then",Value="Greater Then" },
+               new SelectListItem {Text="Less Then",Value="Less Then" },
+                }, new { @class = "form-control", @id = "ddlDateCC", @onchange = "SelectDateCC()" })
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div class="input-group" id="DateCCdiv1">
+                                    @*<input type="text" id="DateShipped1" name="DateShipped1" value="*All Records" disabled>*@
+                                    <input type="text" class="form-control" id="DateCC1" name="DateCC1" value="@ViewBag.DateCC1" readonly>
+                                    <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                    @*<span class="input-group-btn" style="display:table-cell;"> </span>*@
+                                </div>
+
+                                <div class="input-group" id="txtDateCCrangeval1" style="width:100%;">
+                                    <input type="text" class="form-control" id="txtDateCCrangevaltext1" name="txtDateCCrangevaltext1" value="@ViewBag.txtDateCCrangevaltext1" readonly>
+                                    <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+
+                                <div class="input-group" id="DateCCdiv2">
+                                    @*<input type="text" id="DateShipped2" name="DateShipped2" value="0" disabled>*@
+                                    <input type="text" class="form-control" id="DateCC2" value="@ViewBag.DateCC2" name="DateCC2" readonly>
+                                    <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+                                </div>
+                                <div class="input-group" id="txtDateCCrangeval2" style="width:100%;">
+                                    <input type="text" class="form-control" id="txtDateCCrangevaltext2" name="txtDateCCrangevaltext2" value="@ViewBag.txtDateCCrangevaltext2" readonly>
+                                    <span class="input-group-addon fa fa-calendar" style="display:table-cell;"> </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!--/row-->
+
+
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            @*<button class="btn btn-primary">Submit</button>*@
+                            <input type="submit" class="btn btn-primary" name="filter" id="btnSubmit" value="Run Report Now" />
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            @*<input type="button" class="btn btn-primary " value="Asyn Generate Report" onclick="location.href='@Url.Action("RunReportAsyn", "Report")'" />*@
+                            <input type="submit" class="btn btn-primary" name="filter" id="btnSubmit" onclick="return MessageShow()" value="Run as a Job and Notify" />
+
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+    </div>
+
+
+            <!--Report-->
+    <div>
+        @if (ViewBag.Filter == "Run Report Now")
+                {
+            <section class="panel">
+                <div class="panel-body table-responsive">
+                    <div id="reportData" style="width:100%;height:600px;overflow:scroll;">
+                        @using ReportViewerForMvc;
+                        @{
+                            ViewBag.Title = "VSP8610";
+                        }
+
+                        @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { height = "560px", width = "100%" })
+
+                    </div>
+                </div>
+            </section>
+                            }
+
+    </div>
+                            }
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cost Center</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-12 searchfor">
+                    <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                    <div class="col-lg-3">
+                        @Html.DropDownList("CostCenter1CM", new List<SelectListItem> {
+                                            new SelectListItem {Text="Start With",Value="Start With" },
+                                             new SelectListItem {Text="End With",Value="End With" },
+                                              new SelectListItem {Text="Contains This",Value="Contains This" },
+                                             },  new { @id = "ddlCostCenter1CC", @class = "form-control" })
+                    </div>
+                    <div class="col-lg-3">
+                        @Html.DropDownList("CostCenter2CC", new List<SelectListItem> {
+                                   new SelectListItem {Text="Cost Center ID",Value="Cost Center ID" },
+                                   new SelectListItem {Text="Cost Center Name",Value="Cost Center Name" },
+                                    new SelectListItem {Text="Class",Value="Class" },
+                                   new SelectListItem {Text="Department",Value="Department" },
+                                    },  new { @id = "ddlCostCenter2CC", @class = "form-control" })
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="text" id="txtCostCenter1CC" class="form-control" />
+                        <input type="hidden" id="hdnCostCenterCC" />
+                    </div>
+
+                </div>
+
+                <table class="table" id="tableCC">
+                    <br />
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                Cost Center ID
+                            </th>
+                            <th>
+                                Cost Center Name
+                            </th>
+                            <th>
+                                Class
+                            </th>
+                            <th>
+                                Department
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (BO_FilterOption CCM in Model.CostCenter)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="radio" name="rdBtn" id="rdBtn" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => CCM.CostCenterID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => CCM.CostCenterName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => CCM.Class)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => CCM.Department)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer modal-footer-new1">
+
+                Page &nbsp; <label type="label" id="Increatement_PageCount_CostCenter">1</label>
+                &nbsp; of &nbsp;<label type="label" id="Total_PageCount_CostCenter">0</label> &nbsp; pages
+
+                <span style="margin-left: 390px;">
+                    <button type="button" id="0" onclick="F0_tableCC();">First</button>
+                    <button type="button" id="-1" onclick="FMinus10_tableCC();"><<</button>
+                    <button type="button" id="1" onclick="F1_tableCC();">1</button>
+                    <button type="button" id="2" onclick="F2_tableCC();">2</button>
+                    <button type="button" id="3" onclick="F3_tableCC();">3</button> &nbsp;&nbsp;. . . . &nbsp;&nbsp;
+                    <button type="button" id="+1" onclick="FPluse10_tableCC();">>></button>
+                    <button type="button" id="99" onclick="F99_tableCC();">Last</button>
+                    <input type="hidden" id="Total_count_tableCC" value="0" />
+                    <input type="hidden" id="count_tableCC" />
+                    <input type="hidden" id="Total_row_count_tableCC" value="300000" />
+                </span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSub" class="btn btn-primary" data-dismiss="modal">OK</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

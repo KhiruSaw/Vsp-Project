@@ -1,0 +1,1079 @@
+﻿@using VSPApplication.Models;
+@model dynamic
+@{
+    ViewBag.Title = "FilterOption8400";
+    Layout = "~/Views/Shared/_filterView.cshtml";
+}
+
+
+@using (Ajax.BeginForm("FilterOption8400", "Report", FormMethod.Post, null))
+{
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            <input type="button" id="showDiv" class="btn btn-flat" value="+ Show Filter" />
+                        </header>
+
+                        <div class="panel-body" id="hideDiv">
+                            <div class="row">
+                                <div class="col-lg-6 borderdiv">
+                                    <form role="form">
+                                        <div class="row" >
+                                            <div class="col-lg-12">
+                                                <label>Finish Goods Item</label>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+                                                    @Html.DropDownList("FinishGoodsItemFGDV", new List<SelectListItem> {
+                                        new SelectListItem {Text="*All Records",Value="*All Records" },
+                                        new SelectListItem {Text="Between Range",Value="Between Range" },
+                                       new SelectListItem {Text="Exact match",Value="Exact match" },
+                                       new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                       new SelectListItem {Text="Less Then",Value="Less Then" },
+                                       new SelectListItem {Text="Start With",Value="Start With" },
+                                       new SelectListItem {Text="End With",Value="End With" },
+                                       new SelectListItem {Text="Contains This",Value="Contains This" },
+                                        }, new { @class = "form-control", @id = "ddlFinishGoodsItemFGDV", @onchange = "SelectFinishGoodsItemFGDV()" })
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+
+                                                    <div class="input-group">
+                                                        <input type="hidden" id="hdnFGDV" />
+                                                        <input type="text" id="FinishGoodsItem1FGDV" name="FinishGoodsItem1FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["FinishGoodsItem1FGDV"]} else {@ViewBag.FinishGoodsItem1FGDV}" readonly />
+
+                                                        <span class="input-group-btn">
+                                                            <a id="fgifgdvanchor1" href='' data-toggle="modal" data-target="#myModal1">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="FinishGoodsItem2FGDV" name="FinishGoodsItem2FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["FinishGoodsItem2FGDV"]} else {@ViewBag.FinishGoodsItem2FGDV}" readonly />
+                                                        <span class="input-group-btn">
+                                                            <a id="fgifgdvanchor2" href='' data-toggle="modal" data-target="#myModal1">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div><!--/row-->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <label>Finish Goods Name</label>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+                                                    @Html.DropDownList("FinishGoodsNameFGDV", new List<SelectListItem> {
+                                        new SelectListItem {Text="*All Records",Value="*All Records" },
+                                        new SelectListItem {Text="Between Range",Value="Between Range" },
+                                       new SelectListItem {Text="Exact match",Value="Exact match" },
+                                       new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                       new SelectListItem {Text="Less Then",Value="Less Then" },
+                                       new SelectListItem {Text="Start With",Value="Start With" },
+                                       new SelectListItem {Text="End With",Value="End With" },
+                                       new SelectListItem {Text="Contains This",Value="Contains This" },
+                                        }, new { @class = "form-control", @id = "ddlFinishGoodsNameFGDV", @onchange = "SelectFinishGoodsNameFGDV()" })
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+
+                                                    <div class="input-group">                                                     
+                                                        <input type="text" id="FinishGoodsName1FGDV" name="FinishGoodsName1FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["FinishGoodsName1FGDV"]} else {@ViewBag.FinishGoodsName1FGDV}" readonly />
+
+                                                        <span class="input-group-btn">
+                                                            <a id="fgnfgdvanchor1" href='' data-toggle="modal" data-target="#myModal2">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="FinishGoodsName2FGDV" name="FinishGoodsName2FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["FinishGoodsName2FGDV"]} else {@ViewBag.FinishGoodsName2FGDV}" readonly />
+                                                        <span class="input-group-btn">
+                                                            <a id="fgnfgdvanchor2" href='' data-toggle="modal" data-target="#myModal2">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div><!--/row-->
+                                        <div class="row" >
+                                            <div class="col-lg-12">
+                                                <label>Kind</label>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    @Html.DropDownList("KindFGDV", new List<SelectListItem> {
+                                        new SelectListItem {Text="*All Records",Value="*All Records" },
+                                        new SelectListItem {Text="Between Range",Value="Between Range" },
+                                       new SelectListItem {Text="Exact match",Value="Exact match" },
+                                       new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                       new SelectListItem {Text="Less Then",Value="Less Then" },
+                                       new SelectListItem {Text="Start With",Value="Start With" },
+                                       new SelectListItem {Text="End With",Value="End With" },
+                                       new SelectListItem {Text="Contains This",Value="Contains This" },
+                              }, new { @class = "form-control", @id = "ddlKindFGDV", @onchange = "SelectKindFGDV()" })
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="Kind1FGDV" name="Kind1FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["Kind1FGDV"]} else {@ViewBag.Kind1FGDV}" readonly />
+
+                                                        <span class="input-group-btn">
+                                                            <a id="kfgdvanchor1" href='' data-toggle="modal" data-target="#myModal3">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="Kind2FGDV" name="Kind2FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["Kind2FGDV"]} else {@ViewBag.Kind2FGDV}" readonly />
+                                                        <span class="input-group-btn">
+                                                            <a id="kfgdvanchor2" href='' data-toggle="modal" data-target="#myModal3">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div><!--/row-->
+                                        <div class="row" >
+                                            <div class="col-lg-12">
+                                                <label>Inventory Type</label>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    @Html.DropDownList("InventoryTypeFGDV", new List<SelectListItem> {
+                                            new SelectListItem {Text="*All Records",Value="*All Records" },
+                                            new SelectListItem {Text="Between Range",Value="Between Range" },
+                                           new SelectListItem {Text="Exact match",Value="Exact match" },
+                                           new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                           new SelectListItem {Text="Less Then",Value="Less Then" },
+                                           new SelectListItem {Text="Start With",Value="Start With" },
+                                           new SelectListItem {Text="End With",Value="End With" },
+                                           new SelectListItem {Text="Contains This",Value="Contains This" },
+                                         }, new { @class = "form-control", @id = "ddlInventoryTypeFGDV", @onchange = "SelectInventoryTypeFGDV()" })
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="InventoryType1FGDV" name="InventoryType1FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["InventoryType1FGDV"]} else {@ViewBag.InventoryType1FGDV}" readonly />
+
+                                                        <span class="input-group-btn">
+                                                            <a id="itfgdvanchor1" href='' data-toggle="modal" data-target="#myModal4">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="InventoryType2FGDV" name="InventoryType2FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["InventoryType2FGDV"]} else {@ViewBag.InventoryType2FGDV}" readonly />
+                                                        <span class="input-group-btn">
+                                                            <a id="itfgdvanchor2" href='' data-toggle="modal" data-target="#myModal4">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div><!--/row-->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <label>Sub-Type 1</label>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    @Html.DropDownList("SubType1FGDV", new List<SelectListItem> {
+                                            new SelectListItem {Text="*All Records",Value="*All Records" },
+                                            new SelectListItem {Text="Between Range",Value="Between Range" },
+                                           new SelectListItem {Text="Exact match",Value="Exact match" },
+                                           new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                           new SelectListItem {Text="Less Then",Value="Less Then" },
+                                           new SelectListItem {Text="Start With",Value="Start With" },
+                                           new SelectListItem {Text="End With",Value="End With" },
+                                           new SelectListItem {Text="Contains This",Value="Contains This" },
+                                         }, new { @class = "form-control", @id = "ddlSubType1FGDV", @onchange = "SelectSubType1FGDV()" })
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="SubType1_1FGDV" name="SubType1_1FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["SubType1_1FGDV"]} else {@ViewBag.SubType1_1FGDV}" readonly />
+
+                                                        <span class="input-group-btn">
+                                                            <a id="st1fgdvanchor1" href='' data-toggle="modal" data-target="#myModal5">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="SubType1_2FGDV" name="SubType1_2FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["SubType1_2FGDV"]} else {@ViewBag.SubType1_2FGDV}" readonly />
+                                                        <span class="input-group-btn">
+                                                            <a id="st1fgdvanchor2" href='' data-toggle="modal" data-target="#myModal5">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div><!--/row-->
+                                        <div class="row" >
+                                            <div class="col-lg-12">
+                                                <label>Sub-Type 2</label>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    @Html.DropDownList("SubType2FGDV", new List<SelectListItem> {
+                                            new SelectListItem {Text="*All Records",Value="*All Records" },
+                                            new SelectListItem {Text="Between Range",Value="Between Range" },
+                                           new SelectListItem {Text="Exact match",Value="Exact match" },
+                                           new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                           new SelectListItem {Text="Less Then",Value="Less Then" },
+                                           new SelectListItem {Text="Start With",Value="Start With" },
+                                           new SelectListItem {Text="End With",Value="End With" },
+                                           new SelectListItem {Text="Contains This",Value="Contains This" },
+                                         }, new { @class = "form-control", @id = "ddlSubType2FGDV", @onchange = "SelectSubType2FGDV()" })
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="SubType2_1FGDV" name="SubType2_1FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["SubType2_1FGDV"]} else {@ViewBag.SubType2_1FGDV}" readonly />
+
+                                                        <span class="input-group-btn">
+                                                            <a id="st2fgdvanchor1" href='' data-toggle="modal" data-target="#myModal6">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="SubType2_2FGDV" name="SubType2_2FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["SubType2_2FGDV"]} else {@ViewBag.SubType2_2FGDV}" readonly />
+                                                        <span class="input-group-btn">
+                                                            <a id="st2fgdvanchor2" href='' data-toggle="modal" data-target="#myModal6">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!--/row-->
+                                        <div class="row" >
+                                            <div class="col-lg-12">
+                                                <label>Sub-Type 3</label>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    @Html.DropDownList("SubType3FGDV", new List<SelectListItem> {
+                                            new SelectListItem {Text="*All Records",Value="*All Records" },
+                                            new SelectListItem {Text="Between Range",Value="Between Range" },
+                                           new SelectListItem {Text="Exact match",Value="Exact match" },
+                                           new SelectListItem {Text="Greater Then",Value="Greater Then" },
+                                           new SelectListItem {Text="Less Then",Value="Less Then" },
+                                           new SelectListItem {Text="Start With",Value="Start With" },
+                                           new SelectListItem {Text="End With",Value="End With" },
+                                           new SelectListItem {Text="Contains This",Value="Contains This" },
+                                         }, new { @class = "form-control", @id = "ddlSubType3FGDV", @onchange = "SelectSubType3FGDV()" })
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="SubType3_1FGDV" name="SubType3_1FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["SubType3_1FGDV"]} else {@ViewBag.SubType3_1FGDV}" readonly />
+
+                                                        <span class="input-group-btn">
+                                                            <a id="st3fgdvanchor1" href='' data-toggle="modal" data-target="#myModal7">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+
+                                                    <div class="input-group">
+                                                        <input type="text" id="SubType3_2FGDV" name="SubType3_2FGDV" class="form-control" value="@if (ViewBag.Filter == "Run Report Now") { @Request["SubType3_2FGDV"]} else {@ViewBag.SubType3_2FGDV}" readonly />
+                                                        <span class="input-group-btn">
+                                                            <a id="st3fgdvanchor2" href='' data-toggle="modal" data-target="#myModal7">
+                                                                <button class="btn btn-white" type="button"><i class="fa fa-search"></i></button>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!--/row-->
+                                    </form>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-md-12"><label>Skip Zero Quantity</label></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4"><label style="margin-top: 6px;margin-left: 10px;">Remove 0 on hand items</label></div>
+                                        <div class="col-md-8">
+                                            <select class="form-control" name="dllskipzeroquantity" id="dllskipzeroquantity">
+                                                <option>Yes</option>
+                                                <option>No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-md-12"><label>Skip Zero Cost</label></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4"><label style="margin-top: 6px;margin-left: 10px;">Remove 0 on cost items</label></div>
+                                        <div class="col-md-8">
+                                            <select class="form-control" name="dllskipzerocost" id="dllskipzerocost">
+                                                <option>No</option>
+                                                <option>Yes</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:5px;">
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <input type="submit" class="btn btn-primary" name="filter" id="btnSubmit" value="Run Report Now" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    @*<input type="button" class="btn btn-primary " value="Asyn Generate Report" onclick="location.href='@Url.Action("RunReportAsyn", "Report")'" />*@
+                                    <input type="submit" class="btn btn-primary" name="filter" id="btnSubmit" onclick="return MessageShow()" value="Run as a Job and Notify" />
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+
+         
+            <!--Report-->
+       <div>
+        @if (ViewBag.Filter == "Run Report Now")
+        {
+            <section class="panel">
+                <div class="panel-body table-responsive">
+
+                    <div id="reportData" style="width:100%;height:600px;overflow:scroll;">
+                        @using ReportViewerForMvc;
+                        @{
+                            ViewBag.Title = "VSP8400";
+                        }
+
+                        @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { height = "560px", width = "100%" })
+
+                    </div>
+
+
+                </div>
+            </section>
+                            }
+    </div>
+                            }
+
+<div class="container">
+    <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Finish Goods Item</h4>
+                </div>
+                <div class="modal-body">
+
+
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("FinishGoodsItemFGDV1PU", new List<SelectListItem> {
+                                            new SelectListItem {Text="Start With",Value="Start With" },
+                                             new SelectListItem {Text="End With",Value="End With" },
+                                              new SelectListItem {Text="Contains This",Value="Contains This" },
+                                             }, "---Select---", new { @id = "ddlFinishGoodsItemFGDV1PU", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("FinishGoodsItemFGDV2PU", new List<SelectListItem> {
+                                   new SelectListItem {Text="Finished Good",Value="Finished Good" },
+                                   new SelectListItem {Text="Description",Value="Description" },
+                                   new SelectListItem {Text="Customer Part",Value="Customer Part" },
+                                   new SelectListItem {Text="Customer ID",Value="Customer ID" },
+                                   new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                                    }, "---Select---", new { @id = "ddlFinishGoodsItemFGDV2PU", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtSearchFinishGoodsItemFGDV" class="form-control" />
+                            <input type="hidden" id="hdnFinishGoodsItemFGDVPU" />
+                        </div>
+
+                    </div>
+
+
+                    <table class="table" id="tablefgiFGDVPU">
+                        <br />
+                        <thead>
+
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Description
+                                </th>
+
+                                <th>
+                                    FinishedGood
+                                </th>
+                                <th>
+                                    CustomerPart
+                                </th>
+                                <th>
+                                    CustomerID
+                                </th>
+                                <th>
+                                    CustomerName
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption fgi in Model.FinishGoodItem2)
+                           {
+                           <tr>
+                            <td>
+                                <input type="radio" name="rdBtn1" id="rdBtn1" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => fgi.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => fgi.FinishedGood)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => fgi.CustomerPart)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => fgi.CustomerID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => fgi.CustomerName)
+                            </td>
+
+                        </tr>
+                        }
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub1" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+<div class="container">
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Finish Goods Name</h4>
+                </div>
+                <div class="modal-body">
+
+
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("FinishGoodsNameFGDV1PU", new List<SelectListItem> {
+                                            new SelectListItem {Text="Start With",Value="Start With" },
+                                             new SelectListItem {Text="End With",Value="End With" },
+                                              new SelectListItem {Text="Contains This",Value="Contains This" },
+                                             }, "---Select---", new { @id = "ddlFinishGoodsNameFGDV1PU", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("FinishGoodsNameFGDV2PU", new List<SelectListItem> {
+                                   new SelectListItem {Text="Finished Good",Value="Finished Good" },
+                                   new SelectListItem {Text="Description",Value="Description" },
+                                   new SelectListItem {Text="Customer Part",Value="Customer Part" },
+                                   new SelectListItem {Text="Customer ID",Value="Customer ID" },
+                                   new SelectListItem {Text="Customer Name",Value="Customer Name" },
+                                    }, "---Select---", new { @id = "ddlFinishGoodsNameFGDV2PU", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtSearchFinishGoodsNameFGDV2PU" class="form-control" /> 
+                            <input type="hidden" id="hdnFinishGoodsNameFGDV2PU" />                       
+                        </div>
+
+                    </div>
+
+
+                    <table class="table" id="tablefgnFGDVPU">
+                        <br />
+                        <thead>
+
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Description
+                                </th>
+
+                                <th>
+                                    FinishedGood
+                                </th>
+                                <th>
+                                    CustomerPart
+                                </th>
+                                <th>
+                                    CustomerID
+                                </th>
+                                <th>
+                                    CustomerName
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption fgn in Model.FinishGoodName2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn2" id="rdBtn2" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgn.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgn.FinishedGood)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgn.CustomerPart)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgn.CustomerID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => fgn.CustomerName)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub2" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal3" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Kind</h4>
+                    </div>
+                    <div class="modal-body">
+
+
+
+                        <div class="col-md-12 searchfor">
+                            <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+                            <div class="col-lg-3">
+                                @Html.DropDownList("KindFGDV1PU", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "---Select---", new { @id = "ddlKindFGDV1PU", @class = "form-control" })
+                            </div>
+                            <div class="col-lg-3">
+                                @Html.DropDownList("KindFGDV2PU", new List<SelectListItem> {
+               new SelectListItem {Text="Kind Code",Value="Kind Code" },
+               new SelectListItem {Text="Customer Name",Value="Customer Name" },
+
+                }, "---Select---", new { @id = "ddlKindFGDV2PU", @class = "form-control" })
+                            </div>
+                            <div class="col-lg-3">
+                                <input type="text" id="txtSearch1KindFGDV" class="form-control" />   
+                                <input type="hidden" id="hdnKindFGDV" />                           
+                            </div>
+
+                        </div>
+
+                        <br />
+                        <table class="table" id="tablekFGDVPU">
+                            <thead>
+
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        Kind Code
+                                    </th>
+                                    <th>
+                                        Customer Name
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (BO_FilterOption kind in Model.KindCode2)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="radio" name="rdBtn3" id="rdBtn3" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => kind.KindCode)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => kind.CustomerName)
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnSub3" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container">
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal4" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Inventory Type</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col-md-12 searchfor">
+                            <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+
+                            <div class="col-lg-3">
+                                @Html.DropDownList("InventoryTypeFGDV1PU", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "---Select---", new { @id = "ddlInventoryTypeFGDV1PU", @class = "form-control" })
+                            </div>
+                            <div class="col-lg-3">
+                                @Html.DropDownList("InventoryTypeFGDV2PU", new List<SelectListItem> {
+               new SelectListItem {Text="Inventory Type",Value="Inventory Type"},
+               new SelectListItem {Text="Model Name",Value="Model Name" },
+                new SelectListItem {Text="Customer Name",Value="Customer Name" },              
+                }, "---Select---", new { @id = "ddInventoryTypeFGDV2PU", @class = "form-control" })
+                            </div>
+                            <div class="col-lg-3">
+                                <input type="text" id="txtInventoryTypeFGDVPU" class="form-control" />
+                                <input type="hidden" id="hdnInventoryTypeFGDVPU" />
+                            </div>
+                        </div>
+
+                        <br />
+                        <table class="table" id="tableitFGDVPU">
+                            <thead>
+
+                                <tr>
+                                    <th></th>
+
+                                    <th>
+                                        Inventory Type
+                                    </th>
+                                    <th>
+                                        Model Name
+                                    </th>
+                                    <th>
+                                        Customer Name
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (BO_FilterOption it in Model.InventoryType2)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="radio" name="rdBtn4" id="rdBtn4" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => it.InventoryType)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => it.ModelName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => it.CustomerName)
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnSub4" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container">
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal5" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Sub-Type 1</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col-md-12 searchfor">
+                            <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+
+                            <div class="col-lg-3">
+                                @Html.DropDownList("SubType1FGDV1PU", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "---Select---", new { @id = "ddlSubType1FGDV1PU", @class = "form-control" })
+                            </div>
+                            <div class="col-lg-3">
+                                @Html.DropDownList("SubType1FGDV2PU", new List<SelectListItem> {
+               new SelectListItem {Text="Code",Value="Code" },
+               new SelectListItem {Text="Description",Value="Description" },             
+                }, "---Select---", new { @id = "ddlSubType1FGDV2PU", @class = "form-control" })
+                            </div>
+                            <div class="col-lg-3">
+                                <input type="text" id="txtSubType1FGDVPU" class="form-control" />
+                                <input type="hidden" id="hdnSubType1FGDVPU" />
+                            </div>
+
+                        </div>
+
+                        <br />
+
+                        <table class="table" id="tablest1FGDVPU">
+                            <thead>
+                                <tr>
+                                    <th></th>
+
+                                    <th>
+                                        Code
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (BO_FilterOption st1 in Model.SubType_1)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="radio" name="rdBtn5" id="rdBtn5" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => st1.Code)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => st1.Description)
+                                        </td>
+                                       
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnSub5" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal6" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sub-Type 2</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+
+                        <div class="col-lg-3">
+                            @Html.DropDownList("SubType2FGDV1PU", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "---Select---", new { @id = "ddlSubType2FGDV1PU", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("SubType2FGDV2PU", new List<SelectListItem> {
+               new SelectListItem {Text="Code",Value="Code" },
+               new SelectListItem {Text="Description",Value="Description" },
+                }, "---Select---", new { @id = "ddlSubType2FGDV2PU", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtSubType2FGDVPU" class="form-control" />
+                            <input type="hidden" id="hdnSubType2FGDVPU" />
+                        </div>
+
+                    </div>
+
+                    <br />
+
+                    <table class="table" id="tablest2FGDVPU">
+                        <thead>
+                            <tr>
+                                <th></th>
+
+                                <th>
+                                    Code
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption st2 in Model.SubType_2)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn6" id="rdBtn6" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => st2.Code)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => st2.Description)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub6" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal7" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sub-Type 3</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12 searchfor">
+                        <div class="col-lg-2 searchhead"><h4>Search For</h4></div>
+
+                        <div class="col-lg-3">
+                            @Html.DropDownList("SubType3FGDV1PU", new List<SelectListItem> {
+               new SelectListItem {Text="Start With",Value="Start With" },
+               new SelectListItem {Text="End With",Value="End With" },
+               new SelectListItem {Text="Contains This",Value="Contains This" },
+                }, "---Select---", new { @id = "ddlSubType3FGDV1PU", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownList("SubType3FGDV2PU", new List<SelectListItem> {
+               new SelectListItem {Text="Code",Value="Code" },
+               new SelectListItem {Text="Description",Value="Description" },
+                }, "---Select---", new { @id = "ddlSubType3FGDV2PU", @class = "form-control" })
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" id="txtSubType3FGDVPU" class="form-control" />
+                            <input type="hidden" id="hdnSubType3FGDVPU" />
+                        </div>
+
+                    </div>
+
+                    <br />
+
+                    <table class="table" id="tablest3FGDVPU">
+                        <thead>
+                            <tr>
+                                <th></th>
+
+                                <th>
+                                    Code
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BO_FilterOption st3 in Model.SubType_3)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="rdBtn7" id="rdBtn7" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => st3.Code)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => st3.Description)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSub7" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+
+    
+
+
